@@ -1,6 +1,7 @@
 // import MapView from "react-native-maps";
 import React, { useState, useEffect } from "react";
 import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps";
 
 import { View, Text, Image } from "react-native";
 
@@ -22,24 +23,38 @@ const MapScreen = () => {
   }, []);
 
   let text = "Waiting..";
+  let latitude = 0;
+  let longitude = 0;
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    latitude = location.coords.latitude;
+    longitude = location.coords.longitude;
+    text = location.coords.latitude;
+    console.log(location.coords.latitude, location.coords.longitude);
   }
 
   return (
     <View style={{ flex: 1 }}>
       <Text>{text}</Text>
-      {/* <MapView
+      <MapView
         style={{ flex: 1 }}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitude: location ? location.coords.latitude : 37.78825,
+          longitude: location ? location.coords.longitude : -122.4324,
+          latitudeDelta: 0.001,
+          longitudeDelta: 0.006,
         }}
-      /> */}
+      >
+        <Marker
+          coordinate={{
+            latitude: location ? location.coords.latitude : 37.78825,
+            longitude: location ? location.coords.longitude : -122.4324,
+          }}
+          title="My Marker"
+          description="Some description"
+        />
+      </MapView>
     </View>
   );
 };

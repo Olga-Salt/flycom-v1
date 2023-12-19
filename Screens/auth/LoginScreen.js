@@ -124,7 +124,6 @@
 import {
   Text,
   View,
-  ImageBackground,
   TouchableOpacity,
   Platform,
   KeyboardAvoidingView,
@@ -136,10 +135,12 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useForm, Controller } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageToggle from "../../helpers/langSwitcher";
+// import * as Localization from "expo-localization";
 
 import { styles } from "./styles";
-
-import { useState, useEffect } from "react";
 
 import SvgLogo from "../../assets/image/LogoSvg";
 const supportedURL = "https://google.com";
@@ -152,6 +153,7 @@ export default function LoginScreen({
 }) {
   const [isShowPassword, setIsShowPassword] = useState(true);
   const [isShowKeyBoard, setIsShowKeyBoard] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const [dimensions, setDimensions] = useState(width - 20 * 2);
   const {
@@ -194,6 +196,7 @@ export default function LoginScreen({
   return (
     <TouchableWithoutFeedback onPress={keyBoardHide}>
       <View style={styles.container} onLayout={onLayoutRootView}>
+        <LanguageToggle />
         <KeyboardAvoidingView behavior={Platform.OS === "ios" && "padding"}>
           <View
             style={{
@@ -205,7 +208,7 @@ export default function LoginScreen({
               <View style={styles.imageSvg}>
                 <SvgLogo />
               </View>
-              <Text style={styles.screenTitle}>Вход в личный кабинет</Text>
+              <Text style={styles.screenTitle}>{t("app.login.title")}</Text>
               <View style={styles.inputWrapper}>
                 <Controller
                   control={control}

@@ -5,10 +5,12 @@ import { Platform } from "react-native";
 import React from "react";
 
 import MyTaskScreen from "./Screens/auth/mainScreen/MyTaskScreen";
+import CalenderScreen from "./Screens/auth/mainScreen/CalenderScreen";
 import CreateScreen from "./Screens/auth/mainScreen/CreateScreen";
 import MapScreen from "./Screens/auth/mainScreen/MapScreen";
 import ProfileScreen from "./Screens/auth/mainScreen/ProfileScreen";
 import { LoginScreen } from "./Screens/auth";
+import EstimateScreen from "./Screens/auth/mainScreen/EstimateScreen";
 
 import { Image } from "react-native";
 
@@ -40,7 +42,7 @@ export const useRuote = (isAuth, onLayoutRootView, handleLoginSubmit) => {
   return (
     <MainTab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "#006adc",
+        tabBarActiveTintColor: "#F8AB14",
         tabBarStyle: {
           height: 76,
           paddingBottom: Platform.OS === "ios" ? 20 : 10,
@@ -50,25 +52,17 @@ export const useRuote = (isAuth, onLayoutRootView, handleLoginSubmit) => {
       }}
     >
       <MainTab.Screen
-        name="Мои задачи"
-        component={MyTaskScreen}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <Image
-              source={require("./assets/image/ToDo.png")}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-      <MainTab.Screen
         name="Календарь"
-        component={MyTaskScreen}
+        component={CalenderScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("./assets/image/calendar.png")}
-              style={{ width: 40, height: 40 }}
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: focused ? "#F8AB14" : null,
+              }}
             />
           ),
         }}
@@ -80,11 +74,48 @@ export const useRuote = (isAuth, onLayoutRootView, handleLoginSubmit) => {
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("./assets/image/map.png")}
-              style={{ width: 40, height: 40 }}
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: focused ? "#F8AB14" : null,
+              }}
             />
           ),
         }}
       />
+      <MainTab.Screen
+        name="Мои задачи"
+        component={MyTaskScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Image
+              source={require("./assets/image/ToDo.png")}
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: focused ? "#F8AB14" : null,
+              }}
+            />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Смета"
+        component={EstimateScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Image
+              source={require("./assets/image/estimate.png")}
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: focused ? "#F8AB14" : null,
+              }}
+            />
+          ),
+        }}
+      />
+
       {/* <MainTab.Screen
         name="Карта"
         component={CreateScreen}
@@ -105,7 +136,11 @@ export const useRuote = (isAuth, onLayoutRootView, handleLoginSubmit) => {
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("./assets/image/setings.png")}
-              style={{ width: 40, height: 40 }}
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: focused ? "#F8AB14" : null,
+              }}
             />
           ),
         }}
