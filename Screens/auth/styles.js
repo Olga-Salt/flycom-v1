@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
+    position: "relative",
   },
   // image: {
   //   flex: 1,
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
   screenTitle: {
     fontSize: 18,
     textAlign: "center",
-    color: "#212121",
+    color: "#384596",
     fontFamily: "Inter-Regular",
     marginTop: 32,
   },
@@ -56,8 +57,8 @@ export const styles = StyleSheet.create({
   // },
 
   input: {
-    borderColor: "#E8E8E8",
-    borderWidth: 1,
+    borderColor: "#384596",
+    borderWidth: 0.5,
     height: 32,
     paddingLeft: 24,
     borderRadius: 8,

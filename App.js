@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 
 import { useRuote } from "./router";
+import "./i18n";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
