@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
-    position: "relative",
   },
   // image: {
   //   flex: 1,
@@ -61,7 +60,7 @@ export const styles = StyleSheet.create({
     borderWidth: 0.5,
     height: 32,
     paddingLeft: 24,
-    borderRadius: 8,
+    borderRadius: 5,
     marginTop: 16,
     fontSize: 14,
     fontFamily: "Inter-Regular",

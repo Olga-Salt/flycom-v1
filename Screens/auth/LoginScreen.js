@@ -1,126 +1,3 @@
-// import { Text, View, TouchableOpacity, TextInput, Linking } from "react-native";
-// import { Controller } from "react-hook-form";
-// import { styles } from "../../../Screens/auth/styles";
-
-// import { useState } from "react";
-// const supportedURL = "https://google.com";
-
-// export default function LoginScreen({
-//   control1,
-//   handleSubmit1,
-//   onSubmit1,
-//   setIsShowKeyBoard,
-//   isShowKeyBoard,
-//   errors1,
-//   keyBoardHide,
-//   dimensions,
-// }) {
-//   const [isShowPassword, setIsShowPassword] = useState(true);
-
-//   const HandleshowPassword = () => {
-//     setIsShowPassword(!isShowPassword);
-//   };
-
-//   const handleSignIn = async () => {
-//     await Linking.openURL(supportedURL);
-//   };
-
-//   return (
-//     <View
-//       style={{
-//         ...styles.formWrapper,
-//         marginBottom: isShowKeyBoard ? -180 : 0,
-//       }}
-//     >
-//       <View style={{ ...styles.form, width: dimensions }}>
-//         <Text style={styles.screenTitle}>Войти</Text>
-//         <View style={styles.inputWrapper}>
-//           <Controller
-//             control={control1}
-//             render={({ field: { onChange, onBlur, value = "" } }) => (
-//               <TextInput
-//                 style={styles.input}
-//                 onBlur={onBlur}
-//                 onChangeText={(value) => onChange(value)}
-//                 value={value}
-//                 placeholder={"Адрес электронной почты"}
-//                 keyboardType="email-address"
-//                 onFocus={() => setIsShowKeyBoard(true)}
-//                 onSubmitEditing={() => keyBoardHide()}
-//               />
-//             )}
-//             name="email"
-//             rules={{
-//               required: {
-//                 value: true,
-//                 message: "Почта обязательна!",
-//               },
-//             }}
-//           />
-//           <View>
-//             {errors1?.email && (
-//               <Text style={{ fontSize: 20, color: "red" }}>
-//                 {errors1?.email?.message || "Error"}
-//               </Text>
-//             )}
-//           </View>
-//           <View style={{ position: "relative" }}>
-//             <Controller
-//               control={control1}
-//               render={({ field: { onChange, onBlur, value = "" } }) => (
-//                 <TextInput
-//                   style={styles.input}
-//                   onBlur={onBlur}
-//                   onChangeText={(value) => onChange(value)}
-//                   value={value}
-//                   placeholder={"Пароль"}
-//                   secureTextEntry={isShowPassword}
-//                   onFocus={() => setIsShowKeyBoard(true)}
-//                   onSubmitEditing={() => keyBoardHide()}
-//                 />
-//               )}
-//               name="password"
-//               rules={{
-//                 required: {
-//                   value: true,
-//                   message: "Пароль обязателен!",
-//                 },
-//                 minLength: {
-//                   value: 5,
-//                   message: "Минимум 5 символов",
-//                 },
-//               }}
-//             />
-//             <Text style={styles.showPassTitle} onPress={HandleshowPassword}>
-//               {isShowPassword ? "Показать" : "Скрыть"}
-//             </Text>
-//             <View>
-//               {errors1?.password && (
-//                 <Text style={{ fontSize: 20, color: "red" }}>
-//                   {errors1?.password?.message || "Error"}
-//                 </Text>
-//               )}
-//             </View>
-//           </View>
-//         </View>
-
-//         <TouchableOpacity
-//           style={[styles.btn, styles.shadowProp]}
-//           activeOpacity={0.8}
-//           onPress={handleSubmit1(onSubmit1)}
-//         >
-//           <Text style={styles.btnTitle}>Зарегестрироваться</Text>
-//         </TouchableOpacity>
-
-//         <Text style={styles.btnIsSignIn} onPress={handleSignIn}>
-//           Нет аккаунта? Зарегистрироваться
-//         </Text>
-//       </View>
-//     </View>
-//   );
-// }
-
-// ======
 import {
   Text,
   View,
@@ -138,7 +15,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "../../helpers/langSwitcher";
-// import * as Localization from "expo-localization";
 
 import { styles } from "./styles";
 
@@ -153,7 +29,7 @@ export default function LoginScreen({
 }) {
   const [isShowPassword, setIsShowPassword] = useState(true);
   const [isShowKeyBoard, setIsShowKeyBoard] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [dimensions, setDimensions] = useState(width - 20 * 2);
   const {
@@ -208,7 +84,7 @@ export default function LoginScreen({
               <View style={styles.imageSvg}>
                 <SvgLogo />
               </View>
-              <Text style={styles.screenTitle}>{t("app.login.title")}</Text>
+              <Text style={styles.screenTitle}>{t("login.title")}</Text>
               <View style={styles.inputWrapper}>
                 <Controller
                   control={control}
@@ -218,7 +94,7 @@ export default function LoginScreen({
                       onBlur={onBlur}
                       onChangeText={(value) => onChange(value)}
                       value={value}
-                      placeholder={"Логин"}
+                      placeholder={t("login.login")}
                       keyboardType="email-address"
                       onFocus={() => setIsShowKeyBoard(true)}
                       onSubmitEditing={() => keyBoardHide()}
@@ -228,7 +104,7 @@ export default function LoginScreen({
                   rules={{
                     required: {
                       value: true,
-                      message: "Логин обязателен",
+                      message: t("login.error.email.required"),
                     },
                   }}
                 />
@@ -258,11 +134,11 @@ export default function LoginScreen({
                     rules={{
                       required: {
                         value: true,
-                        message: "Пароль обязателен",
+                        message: t("login.error.password.required"),
                       },
                       minLength: {
                         value: 5,
-                        message: "Минимум 5 символов",
+                        message: t("login.error.password.length"),
                       },
                     }}
                   />
@@ -270,7 +146,7 @@ export default function LoginScreen({
                     style={styles.showPassTitle}
                     onPress={HandleshowPassword}
                   >
-                    {isShowPassword ? "Показать" : "Скрыть"}
+                    {isShowPassword ? t("login.showpass") : t("login.hidepass")}
                   </Text>
                   <View>
                     {errors?.password && (
@@ -293,7 +169,7 @@ export default function LoginScreen({
                   locations={[0, 1]}
                   end={{ x: 0.1, y: 1 }}
                 >
-                  <Text style={styles.btnTitle}>ВОЙТИ</Text>
+                  <Text style={styles.btnTitle}>{t("login.btn")}</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>

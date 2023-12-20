@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { View, Switch, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
+import { LinearGradient } from "expo-linear-gradient";
+import { Switch } from "react-native-switch";
 
 function LanguageToggle() {
   const { i18n } = useTranslation();
@@ -14,14 +16,46 @@ function LanguageToggle() {
   return (
     <View style={styles.container}>
       <Text>UA</Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-      <Text>RU</Text>
+      <LinearGradient
+        style={{
+          borderRadius: 20,
+          padding: 2,
+          marginHorizontal: 8,
+          borderWidth: 1,
+          borderColor: "#fff",
+          overflow: "hidden",
+          width: 32,
+          height: 18,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        activeOpacity={0.8}
+        colors={isEnabled ? ["#75C7F1", "#384596"] : ["#767577", "#767577"]}
+        locations={[0, 1]}
+        end={{ x: 0.1, y: 1 }}
+      >
+        <Switch
+          value={isEnabled}
+          onValueChange={toggleSwitch}
+          disabled={false}
+          circleSize={12}
+          barHeight={18}
+          circleBorderWidth={0}
+          backgroundActive={"transparent"}
+          backgroundInactive={"transparent"}
+          circleActiveColor={"#fff"}
+          circleInActiveColor={"#fff"}
+          changeValueImmediately={true}
+          innerCircleStyle={{ alignItems: "center", justifyContent: "center" }}
+          outerCircleStyle={{}}
+          renderActiveText={false}
+          renderInActiveText={false}
+          switchLeftPx={1.8}
+          switchRightPx={1.8}
+          switchWidthMultiplier={2}
+        />
+      </LinearGradient>
+      <Text>ru</Text>
     </View>
   );
 }
@@ -30,9 +64,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    // justifyContent: "flex-end",
     position: "absolute",
-    right: 26,
+    right: 16,
     top: 46,
   },
 });
