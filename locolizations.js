@@ -12,6 +12,8 @@ const ru = {
   "mytask.title": "Мои задачи",
   "estimate.title": "Смета",
   "create.title": "Создать",
+  "location.permission": "Разрешение на доступ к местоположению отклонено",
+  "location.openSettings": "Открыть настройки",
 };
 
 const ua = {
@@ -28,6 +30,8 @@ const ua = {
   "mytask.title": "Мої завдання",
   "estimate.title": "Кошторис",
   "create.title": "Створити",
+  "location.permission": "Дозвіл на доступ до місцезнаходження відхилено",
+  "location.openSettings": "Відкрити налаштування",
 };
 
 export { ru, ua };
