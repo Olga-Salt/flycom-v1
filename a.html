@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html
+  lang="ru"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:fb="http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.9, user-scalable=no"
+    />
+    <meta
+      property="og:image"
+      content="https://maps.visicom.ua/ru/image/planet3?s=573x300&style=base_ru&c=125.5921,10.10057&z=16"
+    />
+    <meta property="og:image:width" content="573" />
+    <meta property="og:image:height" content="300" />
+    <meta
+      property="og:image"
+      content="https://maps.visicom.ua/ru/image/planet3?s=573x300&style=base_ru&c=125.5921,10.10057&z=16"
+    />
+    <meta property="og:title" content="Визиком карты" />
+    <meta property="og:type" content="website" />
+    <title>Украина — Визиком карты</title>
+    <meta
+      name="description"
+      content="Подробная карта Украины и других стран, каталог компаний и интересных мест (POI), расчет автомобильных маршрутов, качественная печать в PDF, определение высот и профиля трассы, слежение, отображение своих данных, карта на сайт"
+    />
+    <meta
+      property="og:description"
+      content="Подробная карта Украины и других стран, каталог компаний и интересных мест (POI), расчет автомобильных маршрутов, качественная печать в PDF, определение высот и профиля трассы, слежение, отображение своих данных, карта на сайт"
+    />
+    <meta name="google" content="notranslate" />
+    <meta
+      name="google-site-verification"
+      content="dlSwEptmwEYD_BElo_i4a0mJJGCEOC9up_Nb3FpSBM8"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://maps.visicom.ua/img/site-icon.png"
+    />
+    <link rel="stylesheet" href="https://maps.visicom.ua/css" />
+    <link rel="dns-prefetch" href="//tms.visicom.ua" />
+    <link rel="dns-prefetch" href="//tms0.visicom.ua" />
+    <link rel="dns-prefetch" href="//tms1.visicom.ua" />
+    <link rel="dns-prefetch" href="//tms2.visicom.ua" />
+    <link rel="dns-prefetch" href="//tms3.visicom.ua" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJG1P84GL0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-RJG1P84GL0");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https://maps.visicom.ua",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://maps.visicom.ua/ru/fts?q=${search_term_string}&c=30.51144,50.45499,12&co=ua",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="header">
+        <div id="menu"></div>
+        <div id="search">
+          <input id="input-hint" />
+          <input
+            class="input"
+            type="text"
+            spellcheck="false"
+            placeholder="Искать адреса, организации..."
+          />
+          <button class="clear"></button>
+          <button class="search disable" title="Поиск"></button>
+          <button class="microphone microphone-off" title="Поиск"></button>
+        </div>
+        <div id="logo" class="ru" title="Визиком"></div>
+      </div>
+      <div id="location"></div>
+      <div id="links">
+        <ul class="left">
+          <li class="fb">
+            <a
+              href="https://www.facebook.com/mapsvisicom"
+              rel="me nofollow"
+              target="_blank"
+              tabindex="-1"
+              >Facebook</a
+            >
+          </li>
+          <li>
+            <a href="https://visicomdata.com" target="_blank">Цифровые карты</a>
+          </li>
+          <li>
+            <a href="https://api.visicom.ua" target="_blank">Разработчикам</a>
+          </li>
+          <li>
+            <a href="https://api.visicom.ua/ru/company" target="_vhelp"
+              >О нас</a
+            >
+          </li>
+        </ul>
+        <ul class="right api-info">
+          <li>Main tileset timestamp 2023-12-17 22:50:51</li>
+          <li>API database timestamp 2023-12-17 13:07:00</li>
+          <li>Data API engine version 5.0.978</li>
+        </ul>
+      </div>
+      <div id="panel">
+        <div id="tools">
+          <ul class="tool">
+            <li class="route" title="Маршруты"></li>
+            <li class="print" title="Печать"></li>
+            <li class="other" title="Дополнительно">
+              <!-- <li class="trees" title="Рождественские елки"> <li class="tracking" title="Слежение"> -->
+            </li>
+          </ul>
+          <ul class="lang">
+            <li class="language ru"></li>
+          </ul>
+        </div>
+        <div id="other" title="Дополнительно">
+          <ul class="primary">
+            <li class="tracking" title="Слежение">Слежение</li>
+            <li class="code" title="Карта для сайта">Карта для сайта</li>
+            <li class="import" title="Добавить слой данных">
+              Добавить слой данных
+            </li>
+          </ul>
+          <ul class="secondary">
+            <li class="elevation"><span class="link">Профиль высот</span></li>
+            <li>
+              <a
+                target="_blank"
+                href="https://chrome.google.com/webstore/detail/visicom-search/nogbehmjhgiagbdfdepmdodlananfncg"
+                >Расширение для браузера</a
+              >
+            </li>
+            <li>
+              <a href="http://poi.visicom.ua/ru/add" target="visicom_poi"
+                >Добавить организацию или место</a
+              >
+              <!--<li class="isodistance"><span class="link">Isodistance</span></a>-->
+            </li>
+            <li class="qrcode"><span class="link">Ссылка в QR коде</span></li>
+          </ul>
+          <ul class="category categories"></ul>
+          <ul class="categories others">
+            <li>Другое</li>
+          </ul>
+          <ul class="categories additional"></ul>
+        </div>
+      </div>
+      <div id="panel-m">
+        <div id="logo-m" class="ru" title="Визиком"></div>
+        <div id="tools-m">
+          <ul class="primary">
+            <li class="route" title="Маршруты">Маршруты</li>
+            <li class="print" title="Печать">Загрузить документ</li>
+            <li class="other" title="Дополнительно">Дополнительно</li>
+          </ul>
+          <ul class="secondary">
+            <li>
+              <a href="http://poi.visicom.ua/ru/add" target="visicom_poi"
+                >Добавить организацию или место</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div id="other-m" class="other-m" title="Дополнительно">
+          <ul class="category categories"></ul>
+          <ul class="categories others">
+            <li>Другое</li>
+          </ul>
+          <ul class="categories additional"></ul>
+        </div>
+        <div id="language-m">
+          <ul>
+            <li class="uk selected">Українська</li>
+            <li class="en">English</li>
+          </ul>
+        </div>
+        <div id="links-m">
+          <ul class="left">
+            <li class="fb">
+              <a
+                href="https://www.facebook.com/mapsvisicom"
+                rel="me nofollow"
+                target="_blank"
+                tabindex="-1"
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://visicomdata.com" target="_blank"
+                >Цифровые карты</a
+              >
+            </li>
+            <li>
+              <a href="https://api.visicom.ua" target="_blank">Разработчикам</a>
+            </li>
+            <li>
+              <a href="https://api.visicom.ua/ru/company" target="_vhelp"
+                >О нас</a
+              >
+            </li>
+          </ul>
+          <ul class="right api-info">
+            <li>Main tileset timestamp 2023-12-17 22:50:51</li>
+            <li>API database timestamp 2023-12-17 13:07:00</li>
+            <li>Data API engine version 5.0.978</li>
+          </ul>
+        </div>
+      </div>
+      <div id="canvas">
+        <div id="map"></div>
+        <div id="zoom">
+          <ul>
+            <li class="location" title="Мое местоположение"></li>
+            <li class="zoom-in" title="Приблизить"></li>
+            <li class="zoom-out" title="Отдалить"></li>
+          </ul>
+        </div>
+        <div id="scale"></div>
+        <div id="attribution">
+          <div class="desc"></div>
+          <ul class="ru">
+            <li id="copyright"></li>
+            <li>
+              Построено на
+              <a tabindex="-1" href="http://leafletjs.com/" target="_blank"
+                >LeafLet</a
+              >
+            </li>
+            <li>
+              <a
+                tabindex="-1"
+                href="https://api.visicom.ua/ru/docs/maps-agreement"
+                target="_vhelp"
+                >Условия использования</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="suggest">
+        <ul></ul>
+        <div class="not-found">
+          К сожалению, ничего не найдено, попробуйте изменить строку поиска
+        </div>
+        <div class="controls">
+          <div
+            id="clear-history"
+            class="button clear"
+            title="Очистить историю поиска"
+          ></div>
+        </div>
+      </div>
+      <div id="list">
+        <div class="control"><div class="close" title="Закрыть"></div></div>
+        <div class="content"><ul></ul></div>
+        <div class="footer">
+          <div class="controls">
+            <ul class="right">
+              <li class="button zoom" title="Показать группу"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="card">
+        <div class="control">
+          <div class="back" title="Назад"></div>
+          <div class="close" title="Закрыть и очистить"></div>
+          <div class="hide" title="Спрятать"></div>
+        </div>
+        <div class="content"></div>
+        <div class="distance-info"></div>
+      </div>
+      <div id="route">
+        <div class="control">
+          <div class="close" title="Закрыть и очистить"></div>
+          <div class="hide" title="Спрятать"></div>
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="info"><div class="title">Маршрут</div></div>
+          </div>
+          <div class="body">
+            <ul class="points"></ul>
+            <div class="info">
+              <div class="button add" title="Добавить пункт назначения"></div>
+              <div class="distance-total">Общая дистанция <span></span></div>
+            </div>
+            <ul class="options">
+              <li><span class="link back">Ехать обратно</span></li>
+              <li><span class="link tsp">Улучшить маршрут</span></li>
+              <li>
+                <span class="link nottsp">Показать исходный маршрут</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer">
+            <div class="controls">
+              <ul class="right">
+                <li class="button elevation" title="Высоты по маршруту"></li>
+                <li class="button share" title="Скопировать ссылку"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tracking">
+        <div class="control">
+          <div class="close" title="Закрыть и очистить"></div>
+          <div class="hide" title="Спрятать"></div>
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="info"><div class="title">Слежение</div></div>
+          </div>
+          <div class="body">
+            <input
+              type="text"
+              spellcheck="false"
+              placeholder="Введите имя устройства или его код"
+            />
+            <div class="button add" title="Добавить устройство"></div>
+            <div class="not-found">
+              Указанное имя или код устройства найти не удалось
+            </div>
+            <ul class="devices"></ul>
+            <ul class="recent"></ul>
+          </div>
+          <div class="footer">
+            <div class="controls">
+              <ul class="left">
+                <a
+                  href="https://api.visicom.ua/ru/products/tracker"
+                  target="_vhelp"
+                  >Справка</a
+                >
+              </ul>
+              <ul class="right">
+                <li class="button share" title="Скопировать ссылку"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="other-layers">
+        <div class="control">
+          <div class="close" title="Закрыть и очистить"></div>
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="info"><div class="title"></div></div>
+          </div>
+          <div class="body"></div>
+          <div class="footer"><div class="controls"></div></div>
+        </div>
+      </div>
+      <div id="elevation">
+        <div class="control">
+          <div class="close" title="Закрыть и очистить"></div>
+          <div class="hide" title="Спрятать"></div>
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="info"><div class="title">Профиль высот</div></div>
+          </div>
+          <div class="body">
+            <div class="help">
+              Для просмотра высот необходимо наличие хотя бы одной из линий —
+              линии маршрута или линии дистанции.
+            </div>
+            <div class="route">
+              <div class="graph"></div>
+              <div class="info"></div>
+            </div>
+            <div class="distance">
+              <div class="graph"></div>
+              <div class="info"></div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="controls">
+              <ul class="right">
+                <li class="button share" title="Скопировать ссылку"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="error">
+        <div class="control">
+          <div class="close" title="Закрыть"></div>
+          <div class="hide" title="Спрятать"></div>
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="info"><div class="title">Сообщить об ошибке</div></div>
+          </div>
+          <div class="body">
+            <div class="comment">
+              Переместите метку на адрес, улицу, организацию или любое другое
+              место где вы заметили неточность. Опишите ее несколькими
+              предложениями и нажмите "Сообщить". Также будет передано состояние
+              карты маршрут и дистанция.
+            </div>
+            <textarea lang="ru" placeholder="Опишите ошибку"></textarea>
+            <input
+              type="text"
+              spellcheck="false"
+              placeholder="От кого (e-mail)"
+            />
+          </div>
+          <div class="footer">
+            <div class="controls">
+              <ul class="right">
+                <li class="send" title="Сообщить">Сообщить</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="language">
+        <ul>
+          <li class="uk selected">Українська</li>
+          <li class="en">English</li>
+        </ul>
+      </div>
+      <div id="cover">
+        <div id="print">
+          <div class="control"><div class="close" title="Закрыть"></div></div>
+          <div class="width-wrp">
+            <ul class="style"></ul>
+            <textarea
+              class="comment"
+              lang="ru"
+              placeholder="Добавить комментарий"
+            ></textarea>
+            <select>
+              <option value="a4_landscape">A4 Landscape</option>
+              <option value="a3_landscape">A3 Landscape</option>
+              <option value="a2_landscape">A2 Landscape</option>
+            </select>
+            <ul class="options">
+              <li id="open_pdf">Открыть документ для печати</li>
+              <li id="download_pdf">Загрузить документ</li>
+            </ul>
+          </div>
+        </div>
+        <div id="import">
+          <div class="control"><div class="close" title="Закрыть"></div></div>
+          <div class="width-wrp">
+            <div class="dragg">
+              <div class="info">
+                Попробуйте перетянуть файл с данными, если ваш браузер не
+                поддерживает такую функцию вы можете загрузить его, или вставить
+                как обычный текст. Поддерживаются форматы GeoJSON, NMEA, GPX и
+                частично KML
+              </div>
+              <ul class="options">
+                <li id="open_file">
+                  Выбрать файл <input id="file" type="file" />
+                </li>
+                <li id="insert_file">Вставить как текст</li>
+              </ul>
+            </div>
+            <div class="insert">
+              <textarea
+                id="text"
+                spellcheck="false"
+                placeholder="Вставьте код"
+              ></textarea>
+              <ul class="options">
+                <li id="draw">Показать</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="photo">
+          <div class="control"><div class="close" title="Закрыть"></div></div>
+          <div class="width-wrp">
+            <div class="image"></div>
+            <div class="text">
+              <div class="title"></div>
+              <div class="desc"></div>
+            </div>
+          </div>
+        </div>
+        <div id="qrcode">
+          <div class="control"><div class="close" title="Закрыть"></div></div>
+          <div class="width-wrp"><div class="image"></div></div>
+        </div>
+        <div id="code">
+          <div class="control"><div class="close"></div></div>
+          <div class="width-wrp">
+            <div id="map-code">
+              <div class="tc"><div class="hint-width">700px</div></div>
+              <div class="rc"></div>
+              <div class="bc"></div>
+              <div class="lc"><div class="hint-height">350px</div></div>
+              <div class="corner"></div>
+            </div>
+            <div class="elemets">
+              <input class="code" type="text" readonly />
+              <label>
+                <input class="static" type="checkbox" />Статическая карта
+              </label>
+              <ul class="options">
+                <li id="copy-code">Копировать</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="message"></div>
+    </div>
+  </body>
+  <script id="location-tpl" type="text/template">
+    <ul> <% for(var i in features) { %> <% var prop = features[i].properties %> <li> <% if(prop.categories !== 'adm_districts') { %> <a href="#" data-id="<%= features[i].id %>" tabindex="-1"><%= prop.name %></a> <%} else { %> <a href="#" data-id="<%= features[i].id %>" tabindex="-1"><%= prop.name + ' ' + prop.type %></a> <%} %> </li> <% } %> </ul>
+  </script>
+  <script id="context-tpl" type="text/template">
+    <ul> <% if(name !== '') { %> <li class="feat"><%= name %></li> <%} %> <li class="finish">Маршрут сюда</li> <li class="start">Маршрут отсюда</li> <li class="distance">Измерить дистанцию</li> <li class="coords"><%= coords %> <span class="elevation"/></li> <li class="marker">Установить метку</li> <li class="error">Сообщить об ошибке</li> </ul>
+  </script>
+  <script id="marker-contextmenu-tpl" type="text/template">
+    <ul> <li class="marker-delete">Удалить метку <li class="finish">Маршрут сюда </ul>
+  </script>
+  <script id="error-marker-contextmenu-tpl" type="text/template">
+    <ul> <li class="marker-delete">Удалить метку </ul>
+  </script>
+  <script id="distance-contextmenu-tpl" type="text/template">
+    <ul> <li class="distance-elevation">Высоты по дистанции <li class="distance-delete">Удалить дистанцию <li class="distance-copy">Копировать как GeoJSON </ul>
+  </script>
+  <script id="route-contextmenu-tpl" type="text/template">
+    <ul> <li class="route-elevation">Высоты по маршруту <li class="route-delete">Удалить маршрут <li class="route-copy">Копировать как GeoJSON </ul>
+  </script>
+  <script id="categories-suggest" type="text/template">
+    <div class="title category"> <%= name %> </div>
+  </script>
+  <script id="poi-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.vitrine %> </div> <div class="desc"> <% if(prop.vitrine !== prop.name) { %> <%= prop.name %><% if(prop.address) { %>.<% } %> <%} if(prop.address) { %> <%= prop.address %> <% } %> </div>
+  </script>
+  <script id="tpm-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div>
+  </script>
+  <script id="hst_district-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div>
+  </script>
+  <script id="adm_place-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div>
+  </script>
+  <script id="adm_country-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div>
+  </script>
+  <script id="adm_level1-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.country + ", " + prop.name %> </div>
+  </script>
+  <script id="adm_level2-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div> <div class="desc"> <%= prop.country + ", " + prop.level1 %> </div>
+  </script>
+  <script id="adm_level3-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name %> </div> <div class="desc"> <%= prop.level1 + ", " + prop.level2 %> </div>
+  </script>
+  <script id="adm_district-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= prop.name + " " + prop.type %> </div> <div class="desc"> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement) %> </div>
+  </script>
+  <script id="adm_settlement-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <div class="title"> <%= Features.formatSettlementName(prop.type, prop.name) %> </div> <div class="desc"> <%= prop.country %> <% if(prop.level1) { %> <%= ", " + prop.level1 %> <%} if(prop.level2) {%> <%= ", " + prop.level2 %> <%} if(prop.level3) {%> <%= ", " + prop.level3 %> <% } %> </div>
+  </script>
+  <script id="adr_street-suggest" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <% var str = (prop.type !== undefined ? prop.type + " " : "") + (prop.name !== undefined ? prop.name + ", " : "") + Features.formatSettlementName(prop.settlement_type, prop.settlement) %> <% if(str.length < 50){ %> <div class="title"> <%= str %> </div> <div class="desc"> <% if( prop.zone ){%> <%= prop.zone %> <% } %> </div> <% } else { %> <div class="title"> <%= prop.type + " " + prop.name %> </div> <div class="desc"> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement)%> <% if( prop.zone ){%> <%=", " + prop.zone %> <% } %> </div> <% } %>
+  </script>
+  <script id="adr_address-suggest" type="text/template">
+    <% var prop = obj.properties; %> <% var str = prop.settlement + ", " + prop.street_type + " " + prop.street + ", " + prop.name %> <!--<%= prop.relevance.toFixed(2) %>--> <% if(str.length < 40){ %> <div class="title"> <%= str %> </div> <div class="desc"> <% if( prop.zone ){%> <%= prop.zone %> <% } %> </div> <% } else { %> <div class="title"> <%= prop.street_type + " " + prop.street + ", " + prop.name%> </div> <div class="desc"> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement) %> <% if( prop.zone ){%> <%=", " + prop.zone %> <% } %> </div> <% } %>
+  </script>
+  <script id="poi-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.vitrine %>
+  </script>
+  <script id="adm_level1-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.country + ", " + prop.name %>
+  </script>
+  <script id="adm_level2-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.name + ", " + prop.level1 %>
+  </script>
+  <script id="adm_level3-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.name + ", " + prop.level2 %>
+  </script>
+  <script id="adm_district-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.name + " " + prop.type %> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement) %>
+  </script>
+  <script id="adm_settlement-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= Features.formatSettlementName(prop.type, prop.name) %> <%= prop.country %> <% if(prop.level1) { %> <%= ", " + prop.level1 %> <%} if(prop.level2) {%> <%= ", " + prop.level2 %> <%} if(prop.level3) {%> <%= ", " + prop.level3 %> <% } %>
+  </script>
+  <script id="adr_street-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.type + " " + prop.name + ", "%> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement) %>
+  </script>
+  <script id="adr_address-suggest-route" type="text/template">
+    <% var prop = obj.properties; %> <!--<%= prop.relevance.toFixed(2) %>--> <%= prop.settlement + ", " + prop.street_type + " " + prop.street + ", " + prop.name %>
+  </script>
+  <script id="poi-card" type="text/template">
+    <% var poi = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <% if (poi.vitrine) {%> <%=poi.vitrine%> <%}%> <% if(lang === "en") {%> <div class="small"><%=poi.name%></div> <%}%> </div> <div class="desc"> <% if(poi.address) {%> <%= Features.clean_address(poi.address) %> <%}%> <% if(poi.address_info) {%> (<%=poi.address_info%>) <%}%> </div> </div> </div> <div class="body"> <% if (poi.w24hours || poi.star) {%> <div class="additional"> <% if (poi.star) {%> <div class="star star<%= poi.star %>"></div> <%}%> <% if (poi.w24hours) {%> Круглосуточно <%}%> </div> <%}%> <% if (poi.phones && poi.phones.length > 0) {%> <div class="phones"> <ul> <% var phones = poi.phones; %> <% for(var i in phones ) {%> <li><a href="tel:<%=phones[i]%>"><%=phones[i]%></a></li> <%}%> </ul> </div> <%}%> <% if (poi.site_url) {%> <div class="site"> <a href="<%=poi.site_url%>" target="_blank"><%=poi.site_url%></a> </div> <%}%> <% if (poi.hotels24link) {%> <div class="partners"> <div class="link"> <a href="<%=poi.hotels24link%>" target="_blank"> <button class="book-hotel">Забронировать</button> </a> </div> <div class="logo"> <img src="https://maps.visicom.ua/img/partner_h24.png" height="30" alt="Hotel 24" /> </div> <div class="phones"> <ul> <li><a href="tel:+380931705916">+380 (93) 170-59-16</a></li> </ul> </div> </div> <%}%> <% if (poi.photo1 || poi.photo2 || poi.photo3) {%> <ul class="images"> <%} if (poi.photo1) {%> <li><img data-photo="photo1" src="<%=poi.photo1%>?s=120:" width="120" alt="" /></li> <%} if (poi.photo2) {%> <li><img data-photo="photo2" src="<%=poi.photo2%>?s=120:" width="120" alt="" /></li> <%} if (poi.photo3) {%> <li><img data-photo="photo3" src="<%=poi.photo3%>?s=120:" width="120" alt="" /></li> <%} if (poi.photo1 || poi.photo2 || poi.photo3) {%> </ul> <%}%> <% if (poi.description) {%> <div class="comment"> <div><%=poi.description%></div> </div> <%}%> <% if (poi.categories) {%> <ul class="categories"> </ul> <%}%> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button route" title="Добавить в маршрут"> <li class="button share" title="Скопировать ссылку"> </ul> <ul class="left"> <li class="button edit" title="Редактировать"> </ul> </div> </div>
+  </script>
+  <script id="hst_district-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name %> </div> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_country-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name %> </div> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_level1-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name %> </div> </div> </div> <div class="body"> <div class="desc"> <%= prop.country %> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_level2-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name %> </div> </div> </div> <div class="body"> <div class="desc"> <%= prop.country %>, <%= prop.level1 %> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_level3-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name %> </div> </div> </div> <div class="body"> <div class="desc"> <%= prop.country %>, <%= prop.level1 %>, <%= prop.level2 %> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_district-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name + " " + prop.type %> </div> </div> </div> <div class="body"> <div class="desc"> <%= Features.formatSettlementName(prop.settlement_type, prop.settlement) %>, <%= prop.level1 %> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adm_settlement-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.name%> </div> </div> </div> <div class="body"> <div class="desc"> <%= prop.type %> <%= prop.name %>, <%= prop.level1 %> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button route" title="Добавить в маршрут"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adr_street-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.type%> <%= prop.name%> </div> <div class="desc"> <%= prop.settlement %> </div> </div> </div> <div class="body"> <div class="desc"> <a href="#" class="addresses">Показать адреса</a> <ul class="address-list"></ul> </div> </div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button route" title="Добавить в маршрут"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="adr_address-card" type="text/template">
+    <% var prop = obj.properties; %> <div class="header"> <div class="info"> <div class="title"> <%= prop.street_type %> <%= prop.street %>, <%= prop.name %> </div> <div class="desc"> <%= prop.settlement_type %> <%= prop.settlement %><% if (prop.postal_code) {%>,<span class="postal-code"> <%= prop.postal_code %> </span> <%}%> </div> </div> </div> <div class="body"></div> <div class="footer"> <div class="controls"> <ul class="right"> <li class="button route" title="Добавить в маршрут"> <li class="button share" title="Скопировать ссылку"> </ul> </div> </div>
+  </script>
+  <script id="code-context-tpl" type="text/template">
+    <ul> <li class="marker-add">Добавить метку</li> <li class="route-enable">Включить маршрут</li> <li class="route-disable">Выключить маршрут</li> </ul>
+  </script>
+  <script id="code-marker-name-tpl" type="text/template">
+    <ul> <li class="marker-add-name"> <input type="text" spellcheck="false" placeholder="Введите имя метки (необязательно)"> <div class="button add" title="Добавить метку"></div> </li> </ul>
+  </script>
+  <script id="code-marker-delete-tpl" type="text/template">
+    <ul> <li class="marker-delete">Удалить метку </ul>
+  </script>
+  <script id="code-point-contextmenu" type="text/template">
+    <ul> <li class="remove-point">Удалить точку </ul>
+  </script>
+  <script id="poi-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div> <% if(obj.address) { %> <div class="desc"><%= obj.address %></div> <%}%>
+  </script>
+  <script id="adr_address-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adr_street-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adm_district-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adm_settlement-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adm_level1-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adm_level2-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <script id="adm_level3-result" type="text/template">
+    <div class="title"> <%= Features.name(obj) %> </div>
+  </script>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <defs>
+      <filter id="blur1" x="-100%" y="-100%" width="400%" height="400%">
+        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+      </filter>
+    </defs>
+    <style>
+      .graph svg {
+        width: 100%;
+      }
+      .result-bg {
+        fill: #646464;
+        filter: url(#blur1);
+      }
+      .result-fill {
+        fill: #ff0000;
+        stroke: #ffffff;
+        stroke-width: 2.3px;
+        fill-opacity: 0.9;
+      }
+      .result_text-bg,
+      .result_text-stroke,
+      .result_text-fill {
+        font-family: "Open sans", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        font-style: italic;
+      }
+      .result_text-bg {
+        fill: #646464;
+        stroke: #646464;
+        stroke-width: 1;
+        filter: url(#blur1);
+      }
+      .result_text-stroke {
+        fill: #ffffff;
+        stroke: #ffffff;
+        stroke-width: 3.7;
+      }
+      .result_text-fill {
+        fill: #ff0000;
+      }
+      .context-bg {
+        fill: #2d2d2d;
+        filter: url(#blur1);
+      }
+      .context-fill {
+        fill: #000000;
+        stroke: #ffffff;
+        stroke-width: 1.3px;
+      }
+      .context-t {
+        fill: #2d2d2d;
+        fill-opacity: 1;
+      }
+      .selected-bg {
+        fill: #646464;
+        filter: url(#blur1);
+      }
+      .selected-fill {
+        fill: #ff0000;
+        fill-opacity: 0.9;
+        stroke: #ffffff;
+        stroke-width: 2.3px;
+      }
+      .selected .t {
+        fill: #ff0000;
+        fill-opacity: 1;
+      }
+      .selected_line-bg {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #808080;
+        stroke-width: 4;
+        stroke-opacity: 0.3;
+      }
+      .selected_line-stroke {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 5;
+      }
+      .selected_line-fill {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 2;
+      }
+      .selected_polygon-border-bg {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #646464;
+        filter: url(#blur1);
+      }
+      .selected_polygon-border-stroke {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: #ff0000;
+        stroke: #ffffff;
+        stroke-width: 5;
+        fill-opacity: 0.1;
+      }
+      .selected_polygon-fill {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 2;
+      }
+      .selected_polygon-fill-hoverable {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: #ff0000;
+        stroke: #ff0000;
+        stroke-width: 2;
+        fill-opacity: 0.01;
+      }
+      .selected_polygon-border-stroke-hover {
+        fill-opacity: 0.2;
+      }
+      .distance_line-fill {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #2a2a2a;
+        stroke-width: 2;
+      }
+      .route-line-fill {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke: #0000ff;
+        stroke-width: 2;
+      }
+      .track-curve {
+        fill: none;
+        stroke-width: 2;
+      }
+      .track-shadow {
+        fill: none;
+        stroke-width: 4;
+        stroke: #808080;
+        stroke-opacity: 0.3;
+      }
+      .track-line {
+        fill: none;
+        stroke-opacity: 0.5;
+      }
+      .track-circle {
+        fill-opacity: 0.2;
+        stroke-width: 0;
+        cursor: pointer;
+      }
+      circle.icon {
+        fill-opacity: 1;
+        stroke: #ffffff;
+        stroke-width: 2;
+        stroke-opacity: 1;
+        cursor: pointer;
+      }
+      circle.shadow {
+        opacity: 0.5;
+        fill: #808080;
+        stroke-width: 0;
+        opacity: 0.5;
+      }
+    </style>
+  </svg>
+  <script>
+    lang = "ru";
+    defaultLang = "en";
+    hasElevation = true;
+    langParam = "?lang=" + lang;
+    shareImage =
+      "https://maps.visicom.ua/ru/image/planet3?s=573x300&style=base_ru&c=125.5921,10.10057&z=16";
+    center = "6.2175,50.766779,12";
+    place = "";
+    tms_url = "https://tms.visicom.rest/2.0.0/";
+    print_url = "https://maps.visicom.ua/ru/pdf";
+    base_path = "https://maps.visicom.ua";
+    iframe_url = "https://maps.visicom.ua/iframe/";
+    trackingUrl = "https://maps.visicom.ua/tracking/1.0";
+    api_proxy_url = "https://maps.visicom.ua/proxy/ru";
+    resource_base_path = "https://maps.visicom.ua/ru";
+    head_title = "Визиком карты";
+    search_not_found =
+      "К сожалению, ничего не найдено, попробуйте изменить строку поиска";
+    route_start_str = "Старт";
+    route_finish_str = "Финиш";
+    route_search_placeholder = "Выберите пункт назначения или нажмите на карту";
+    error_note_sent = "Сообщить";
+    distance_begin_str = "Начало";
+    distance_direct = "distance_direct ";
+    distance_road = "distance_road";
+    tracking_accuracy = "Точность";
+    tracking_add_device = "Добавить устройство";
+    tracking_show_track = "Показать или спрятать трек";
+    import_unsuported = "Извините, но формат распознать не удалось.";
+    code_info = "Скопируйте код карты";
+    elevation_rise = "Набор высоты";
+    elevation_axis = "Высота (м)";
+    active_copy = "Ссылка скопирована";
+    active_code_copy = "Код скопировано";
+    active_coord_copy = "Координаты скопировано";
+    print_styles = {
+      maps: {
+        uk: ["planet3.print", "planet3.base"],
+        ru: ["planet3.print_ru", "planet3.base_ru"],
+        en: ["planet3.print_en", "planet3.base_en"],
+      },
+    };
+    otherLayersJson = [];
+    otherLayersJson = [
+      {
+        name_ru: "Контейнеры для отходов",
+        name_default: "containers",
+        name_uk: "Контейнери для відходів",
+        name: "0",
+        disabled: false,
+        name_en: "Waste containers",
+      },
+      {
+        name_ru: "",
+        name_default: "bikeroutestest17042019",
+        name_uk: "",
+        name: "bikeroutestest17042019",
+        disabled: true,
+        name_en: "",
+      },
+      {
+        name_ru: "",
+        name_default: "Виборчі округи",
+        name_uk: "",
+        name: "constituencies",
+        disabled: true,
+        name_en: "",
+      },
+      {
+        name_ru: "Деревья Бережан",
+        name_default: "Дерева Бережан",
+        name_uk: "Дерева Бережан",
+        name: "dereva_berezhan",
+        disabled: true,
+        name_en: "Berezhani trees",
+      },
+      {
+        name_ru: "Запрещенные пляжи Киева",
+        name_default: "Заборонені пляжі Києва",
+        name_uk: "Заборонені пляжі Києва",
+        name: "kyiv_restricted_beaches",
+        disabled: true,
+        name_en: "Kyiv restricted beaches",
+      },
+      {
+        name_ru: "",
+        name_default: "t",
+        name_uk: "",
+        name: "Oak_trees_Teterev",
+        disabled: true,
+        name_en: "",
+      },
+      {
+        name_ru: "Вековые деревья Киева",
+        name_default: "Найстаріші дерева Києва",
+        name_uk: "Найстаріші дерева Києва",
+        name: "oldesttrees",
+        disabled: true,
+        name_en: "The eldest Kyiv trees",
+      },
+      {
+        name_ru: "Старейшие деревья Украины",
+        name_default: "Найстаріші дерева України",
+        name_uk: "Найстаріші дерева України",
+        name: "oldesttreesukraine",
+        disabled: false,
+        name_en: "The eldest trees of Ukraine",
+      },
+      {
+        name_ru: "Границы фотоконкурса «Природа Подесенья»",
+        name_default: "Межі фотоконкурсу «Природа Подесення»",
+        name_uk: "Межі фотоконкурсу «Природа Подесення»",
+        name: "photo_podesennia",
+        disabled: true,
+        name_en: "",
+      },
+    ];
+  </script>
+  <script src="https://maps.visicom.ua/js/js/lib.v1.0.6.js"></script>
+  <script src="https://maps.visicom.ua/js/js/app.v1.1.23.js"></script>
+</html>
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://api.visicom.ua/apps/visicom-autocomplete.min.css"
+    />
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      .leaflet-container {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      #visicom-autocomplete {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        z-index: 99999;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="visicom-autocomplete">
+      <a href="https://api.visicom.ua/" target="_blank">© Visicom</a>
+    </div>
+    <div id="map" style="width: 100%; height: 100vh"></div>
+
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script
+      type="text/javascript"
+      src="https://api.visicom.ua/apps/visicom-autocomplete.min.js"
+    ></script>
+
+    <script>
+      //  document.addEventListener('DOMContentLoaded', function () {
+      var markers = {};
+
+      window.addEventListener("message", function (event) {
+        var location = JSON.parse(event.data);
+        if (window.map) {
+          window.map.setView([location.latitude, location.longitude], 16);
+        } else {
+          console.log("Карта еще не готова");
+        }
+      });
+
+      var map = L.map("map").setView([46.48464, 30.19768], 19);
+
+      L.tileLayer(
+        "http://tms{s}.visicom.ua/2.0.0/planet3/base_ru/{z}/{x}/{y}.png?key=569135501586b9f0be645dc592e59879",
+        {
+          maxZoom: 19,
+          tms: true,
+          attribution: "Данные карт © 2019 ЧАО «Визиком»",
+          subdomains: "123",
+        }
+      ).addTo(map);
+
+      window.map = map;
+      window.ReactNativeWebView.postMessage("MAP_READY");
+
+      // это рабочий внизу, вверху тоже но тестовый
+      // let map = new L.Map('map', {
+      //     center: new L.LatLng(46.48464, 30.19752),
+      //     zoom: 19,
+      //     layers: [
+      //         new L.TileLayer(
+      //                 'https://tms{s}.visicom.ua/2.0.0/planet3/base_ru/{z}/{x}/{y}.png?key=569135501586b9f0be645dc592e59879',
+      //                 {
+      //                     maxZoom: 19,
+      //                     tms: true,
+      //                     attribution: 'Данные карт © 2019 ЧАО «Визиком»',
+      //                     subdomains: '123'
+      //                 }
+      //         )
+      //     ]
+
+      // });
+
+      //  let marker = L.marker([46.48464, 30.19752]).addTo(map);
+      //  marker.bindPopup("Это мой маркер!");
+
+      //  var popup = L.popup();
+
+      //     function onMapClick(e) {
+      //         popup
+      //             .setLatLng(e.latlng)
+      //             .setContent("You clicked the map at " + e.latlng.toString())
+      //             .openOn(map);
+      //     }
+
+      //     map.on('click', onMapClick);
+
+      // Добавление маркера на карту при клике
+      //   map.on('click', function(e) {
+      //     var marker = L.marker(e.latlng).addTo(map);
+      //     marker.bindPopup("<b>Новый маркер</b>").openPopup();
+      //   });
+
+      let ac = new visicomAutoComplete({
+        selector: "#visicom-autocomplete",
+        apiKey: "2fed39e03b18a9e97fef349642cb2e54",
+        placeholder: "Search your places...",
+        minChars: 3,
+        delay: 150,
+        width: "90%",
+        height: "35px",
+        map: map,
+        suggestsLimit: 5,
+        includeCategories: [],
+        excludeCategories: [],
+        maxCharsInSuggest: 55,
+        lang: "local",
+        onSuggestSelected: (suggest) =>
+          console.log("Suggest selected: " + suggest.html),
+        customFeatures: [
+          {
+            html: "дом Беляевка",
+            keywords: "мой дом",
+            coords: [46.48464, 30.19752],
+          },
+          {
+            html: "тестовый вариант",
+            keywords: "чернигов шевченко 23",
+            coords: [50.46537, 30.48019],
+          },
+        ],
+      });
+      // });
+    </script>
+  </body>
+</html>

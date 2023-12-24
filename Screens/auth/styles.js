@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
   },
 
   btnWithGradient: {
-    borderRadius: 8,
+    borderRadius: 20,
     marginTop: 32,
     paddingBottom: 12,
     paddingTop: 12,
@@ -138,5 +138,35 @@ export const styles = StyleSheet.create({
     right: 16,
     top: 9,
     paddingVertical: 15,
+  },
+
+  btnLocation: {
+    position: "absolute",
+    right: 16,
+    bottom: 30,
+    borderRadius: 50,
+    backgroundColor: "#fff",
+    height: 60,
+    width: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    ...Platform.select({
+      ios: {
+        shadowColor: "#171717",
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.4,
+        shadowRadius: 2,
+      },
+      android: {
+        elevation: 3,
+        shadowColor: "#000",
+      },
+      default: {
+        shadowColor: "#171717",
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.4,
+        shadowRadius: 2,
+      },
+    }),
   },
 });

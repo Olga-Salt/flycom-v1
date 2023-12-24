@@ -14,6 +14,8 @@ const ru = {
   "create.title": "Создать",
   "location.permission": "Разрешение на доступ к местоположению отклонено",
   "location.openSettings": "Открыть настройки",
+  "map.search": "Поиск",
+  "map.yourLocation": "Ваше местоположение",
 };
 
 const ua = {
@@ -32,6 +34,8 @@ const ua = {
   "create.title": "Створити",
   "location.permission": "Дозвіл на доступ до місцезнаходження відхилено",
   "location.openSettings": "Відкрити налаштування",
+  "map.search": "Пошук",
+  "map.yourLocation": "Ваше місцезнаходження",
 };
 
 export { ru, ua };

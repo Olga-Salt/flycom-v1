@@ -1,30 +1,30 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+// import { SafeAreaView } from "react-native-safe-area-context";
 import { SimpleLineIcons } from "react-native-vector-icons";
 
 const ProfileScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <View style={styles.container}>
-        <View style={styles.userInfoWrap}>
-          <View>
-            <Image
-              style={styles.userAvatar}
-              source={require("../../../assets/image/user.png")}
-            />
-          </View>
-          <View>
-            <Text style={styles.userName}>Иванов Иван Иванович</Text>
-            <Text style={styles.userDetails}>Специалист ТС Одесса</Text>
-          </View>
+    // <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={styles.container}>
+      <View style={styles.userInfoWrap}>
+        <View>
+          <Image
+            style={styles.userAvatar}
+            source={require("../../../assets/image/user.png")}
+          />
         </View>
-        <View style={styles.notificationBell}>
-          <SimpleLineIcons name="bell" size={24} color="black" />
-          <View style={styles.notificationDot}></View>
+        <View>
+          <Text style={styles.userName}>Иванов Иван Иванович</Text>
+          <Text style={styles.userDetails}>Специалист ТС Одесса</Text>
         </View>
       </View>
-    </SafeAreaView>
+      <View style={styles.notificationBell}>
+        <SimpleLineIcons name="bell" size={24} color="black" />
+        <View style={styles.notificationDot}></View>
+      </View>
+    </View>
+    // </SafeAreaView>
   );
 };
 

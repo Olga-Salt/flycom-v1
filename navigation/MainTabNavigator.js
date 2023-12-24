@@ -11,6 +11,7 @@ import {
   MyTaskScreen,
   ProfileScreen,
 } from "../Screens/auth/mainScreen";
+import LanguageToggle from "../helpers/langSwitcher";
 
 const MainTab = createBottomTabNavigator();
 
@@ -22,12 +23,17 @@ const MainTabNavigator = () => {
     <MainTab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "#F8AB14",
+        tabBarHideOnKeyboard: true,
+        headerRight: () => <LanguageToggle />,
+        headerStatusBarHeight: 0,
         tabBarStyle: {
-          height: 76,
-          paddingBottom: Platform.OS === "ios" ? 20 : 10,
+          height: Platform.OS === "ios" ? 66 : 76,
+          paddingTop: 8,
+          paddingBottom: Platform.OS === "ios" ? 0 : 10,
           borderTopColor: "transparent",
           backgroundColor: "#fff",
-          paddingHorizontal: Platform.OS === "ios" ? 10 : null,
+          // paddingBottom: Platform.OS === "ios" ? 20 : 10,
+          // paddingHorizontal: Platform.OS === "ios" ? 10 : null,
         },
       }}
     >
@@ -51,6 +57,7 @@ const MainTabNavigator = () => {
         name="Карта"
         component={MapScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/map.png")}
@@ -97,17 +104,17 @@ const MainTabNavigator = () => {
       />
 
       {/* <MainTab.Screen
-        name="Карта"
-        component={CreateScreen}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <Image
-              source={require("./assets/image/map.png")}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      /> */}
+          name="Карта"
+          component={CreateScreen}
+          options={{
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={require("./assets/image/map.png")}
+                style={{ width: 40, height: 40 }}
+              />
+            ),
+          }}
+        /> */}
       <MainTab.Screen
         name={t("settings.title")}
         component={ProfileScreen}

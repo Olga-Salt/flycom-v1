@@ -62,8 +62,8 @@ export default function App() {
   };
 
   const routing = useRuote(
-    {},
-    // isAuth,
+    // {},
+    isAuth,
     onLayoutRootView,
     handleLoginSubmit
   );

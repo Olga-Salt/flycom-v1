@@ -1,5 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { LoginScreen } from "./Screens/auth";
 import MainTabNavigator from "./navigation/MainTabNavigator";
@@ -28,5 +29,9 @@ export const useRuote = (isAuth, onLayoutRootView, handleLoginSubmit) => {
     );
   }
 
-  return <MainTabNavigator />;
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <MainTabNavigator />
+    </SafeAreaView>
+  );
 };
