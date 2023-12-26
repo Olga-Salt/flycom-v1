@@ -376,7 +376,7 @@ const MapScreen = () => {
 
   useEffect(() => {
     if (webViewReady && mapReady && location) {
-      console.log("Отправка координат:", location);
+      // console.log("Отправка координат:", location);
 
       let message = t("map.yourLocation");
 
