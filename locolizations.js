@@ -17,6 +17,14 @@ const ru = {
   "location.openSettings": "Открыть настройки",
   "map.search": "Поиск",
   "map.yourLocation": "Ваше местоположение",
+  "language.title": "Язык",
+  "pushMessage.title": "Push уведомления",
+  "biometric.title": "Биометрия",
+  "language.ru": "Русский",
+  "language.ua": "Украинский",
+  "title.off": "Выключено",
+  "theme.light": "Светлая",
+  "theme.dark": "Темная",
 };
 
 const ua = {
@@ -38,6 +46,14 @@ const ua = {
   "location.openSettings": "Відкрити налаштування",
   "map.search": "Пошук",
   "map.yourLocation": "Ваше місцезнаходження",
+  "language.title": "Мова",
+  "pushMessage.title": "Push повідомлення",
+  "biometric.title": "Біометрія",
+  "language.ru": "Російська",
+  "language.ua": "Українська",
+  "title.off": "Вимкнено",
+  "theme.light": "Світла",
+  "theme.dark": "Темна",
 };
 
 export { ru, ua };

@@ -25,7 +25,7 @@ const MainTabNavigator = () => {
         tabBarHideOnKeyboard: true,
         // headerRight: () => <LanguageToggle />,
         headerShown: false,
-        headerStatusBarHeight: 0,
+        // headerStatusBarHeight: 0,
         tabBarStyle: {
           height: Platform.OS === "ios" ? 66 : 76,
           paddingTop: 8,
