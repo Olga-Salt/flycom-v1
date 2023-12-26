@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from "react-native";
+import { SHADOWS, SIZES, COLORS, FONT } from "../../constants";
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,9 +15,9 @@ export const styles = StyleSheet.create({
   screenTitle: {
     fontSize: 18,
     textAlign: "center",
-    color: "#384596",
-    fontFamily: "Inter-Regular",
-    marginTop: 32,
+    color: COLORS.primary,
+    fontFamily: FONT.regular,
+    marginTop: SIZES.xxLarge,
   },
 
   imageSvg: {
@@ -24,7 +25,7 @@ export const styles = StyleSheet.create({
   },
 
   formWrapper: {
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.white,
     alignItems: "center",
   },
 
@@ -34,65 +35,28 @@ export const styles = StyleSheet.create({
     // paddingTop: 180,
   },
 
-  // shadowProp: {
-  //   ...Platform.select({
-  //     ios: {
-  //       shadowColor: "#171717",
-  //       shadowOffset: { width: 0, height: 3 },
-  //       shadowOpacity: 0.4,
-  //       shadowRadius: 2,
-  //     },
-  //     android: {
-  //       elevation: 3,
-  //       shadowColor: "#000",
-  //     },
-  //     default: {
-  //       shadowColor: "#171717",
-  //       shadowOffset: { width: 0, height: 3 },
-  //       shadowOpacity: 0.4,
-  //       shadowRadius: 2,
-  //     },
-  //   }),
-  // },
-
   input: {
-    borderColor: "#384596",
+    borderColor: COLORS.primary,
     borderWidth: 0.5,
-    height: 32,
-    paddingLeft: 24,
+    height: SIZES.xxLarge,
+    paddingLeft: SIZES.xLarge,
     borderRadius: 5,
-    marginTop: 16,
+    marginTop: SIZES.medium,
     fontSize: 14,
-    fontFamily: "Inter-Regular",
+    fontFamily: FONT.regular,
   },
   inputWrapper: {
-    marginTop: 16,
-    // marginHorizontal: 40,
+    marginTop: SIZES.medium,
   },
 
   btnWithGradient: {
     borderRadius: 20,
-    marginTop: 32,
-    paddingBottom: 12,
-    paddingTop: 12,
+    marginTop: SIZES.xxLarge,
+    paddingBottom: SIZES.small,
+    paddingTop: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 32,
-
-    // ...Platform.select({
-    //   ios: {
-    //     backgroundColor: "#fff",
-    //     borderColor: "#FF6C00",
-    //   },
-    //   android: {
-    //     backgroundColor: "#fff",
-    //     borderColor: "#FF6C00",
-    //   },
-    //   default: {
-    //     backgroundColor: "#fff",
-    //     borderColor: "#FF6C00",
-    //   },
-    // }),
+    marginHorizontal: SIZES.xxLarge,
   },
 
   btn: {
@@ -102,71 +66,26 @@ export const styles = StyleSheet.create({
     height: 51,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 16,
-
-    // ...Platform.select({
-    //   ios: {
-    //     backgroundColor: "#FF6C00",
-    //     borderColor: "#FF6C00",
-    //   },
-    //   android: {
-    //     backgroundColor: "#FF6C00",
-    //     borderColor: "#FF6C00",
-    //   },
-    //   default: {
-    //     backgroundColor: "#FF6C00",
-    //     borderColor: "#FF6C00",
-    //   },
-    // }),
+    marginHorizontal: SIZES.medium,
   },
+
   btnIsSignIn: {
     color: "#1B4371",
     textAlign: "center",
-    marginTop: 16,
+    marginTop: SIZES.medium,
   },
-  btnTitle: {
+  btnTitleGradient: {
     color: "#fff",
     fontSize: 14,
-    fontWeight: "bold",
     fontFamily: "Inter-Bold",
   },
   showPassTitle: {
-    fontFamily: "Inter-Regular",
-    fontSize: 12,
+    fontFamily: FONT.regular,
+    fontSize: SIZES.small,
     color: "#1B4371",
     position: "absolute",
-    right: 16,
+    right: SIZES.medium,
     top: 9,
-    paddingVertical: 15,
-  },
-
-  btnLocation: {
-    position: "absolute",
-    right: 16,
-    bottom: 30,
-    borderRadius: 50,
-    backgroundColor: "#fff",
-    height: 60,
-    width: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    ...Platform.select({
-      ios: {
-        shadowColor: "#171717",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.4,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 3,
-        shadowColor: "#000",
-      },
-      default: {
-        shadowColor: "#171717",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.4,
-        shadowRadius: 2,
-      },
-    }),
+    paddingVertical: SIZES.medium,
   },
 });
