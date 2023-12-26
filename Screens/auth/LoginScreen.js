@@ -17,9 +17,11 @@ import { useTranslation } from "react-i18next";
 import LanguageToggle from "../../helpers/langSwitcher";
 
 import { styles } from "./styles";
+import { commonStyles } from "../../css/common";
 
 import SvgLogo from "../../assets/image/LogoSvg";
 const supportedURL = "https://google.com";
+
 const width = Dimensions.get("window").width - 20 * 2;
 
 export default function LoginScreen({
@@ -29,9 +31,10 @@ export default function LoginScreen({
 }) {
   const [isShowPassword, setIsShowPassword] = useState(true);
   const [isShowKeyBoard, setIsShowKeyBoard] = useState(false);
+  const [dimensions, setDimensions] = useState(width - 20 * 2);
+
   const { t } = useTranslation();
 
-  const [dimensions, setDimensions] = useState(width - 20 * 2);
   const {
     handleSubmit,
     control,
@@ -163,13 +166,15 @@ export default function LoginScreen({
                 onPress={handleSubmit(onSubmit)}
               >
                 <LinearGradient
-                  style={[styles.btnWithGradient]}
+                  style={[commonStyles.btnWithGradient]}
                   activeOpacity={0.8}
                   colors={["#75C7F1", "#384596"]}
                   locations={[0, 1]}
                   end={{ x: 0.1, y: 1 }}
                 >
-                  <Text style={styles.btnTitle}>{t("login.btn")}</Text>
+                  <Text style={commonStyles.btnTitleGradient}>
+                    {t("login.btn")}
+                  </Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>

@@ -11,6 +11,8 @@ import {
   ScrollView,
 } from "react-native";
 
+import { commonStyles } from "../../css/common";
+
 const data = [
   { label: "Item 1", value: "1" },
   { label: "Item 2", value: "2" },
@@ -28,14 +30,13 @@ const MyTaskScreen = () => {
 
   const renderLabel = (label) => {
     return <Text style={[styles.label]}>{label}</Text>;
-    return null;
   };
 
   return (
-    <View style={styles.container}>
+    <View style={commonStyles.container}>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.sectionTitle}>Новая заявка:</Text>
-        <View style={styles.selectContainer}>
+        <Text style={commonStyles.sectionTitle}>Новая заявка:</Text>
+        <View style={commonStyles.rowContainer}>
           {renderLabel("Тема:")}
           <Dropdown
             style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -67,7 +68,7 @@ const MyTaskScreen = () => {
             // )}
           />
         </View>
-        <View style={styles.selectContainer}>
+        <View style={commonStyles.rowContainer}>
           {renderLabel("Статус:")}
           <Dropdown
             style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -97,27 +98,11 @@ const MyTaskScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    backgroundColor: "#fff",
-    paddingHorizontal: 16,
-  },
-
   scrollView: {
     // backgroundColor: "pink",
     // marginHorizontal: 20,
   },
 
-  selectContainer: {
-    backgroundColor: "white",
-    paddingBottom: 8,
-    paddingTop: 8,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
   dropdown: {
     height: 24,
     width: 240,

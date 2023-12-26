@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { COLORS } from "../constants";
 
 import {
   CalenderScreen,
@@ -9,7 +10,7 @@ import {
   MapScreen,
   MyTaskScreen,
   ProfileScreen,
-} from "../Screens/auth/mainScreen";
+} from "../Screens/mainScreen";
 import LanguageToggle from "../helpers/langSwitcher";
 
 const MainTab = createBottomTabNavigator();
@@ -18,8 +19,9 @@ const MainTab = createBottomTabNavigator();
 const MainTabNavigator = () => {
   return (
     <MainTab.Navigator
+      initialRouteName="Мои задачи"
       screenOptions={{
-        tabBarActiveTintColor: "#F8AB14",
+        tabBarActiveTintColor: COLORS.accentOrange,
         tabBarHideOnKeyboard: true,
         // headerRight: () => <LanguageToggle />,
         headerShown: false,
@@ -45,7 +47,7 @@ const MainTabNavigator = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#F8AB14" : null,
+                tintColor: focused ? COLORS.accentOrange : null,
               }}
             />
           ),
@@ -62,7 +64,7 @@ const MainTabNavigator = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#F8AB14" : null,
+                tintColor: focused ? COLORS.accentOrange : null,
               }}
             />
           ),
@@ -78,7 +80,7 @@ const MainTabNavigator = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#F8AB14" : null,
+                tintColor: focused ? COLORS.accentOrange : null,
               }}
             />
           ),
@@ -94,7 +96,7 @@ const MainTabNavigator = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#F8AB14" : null,
+                tintColor: focused ? COLORS.accentOrange : null,
               }}
             />
           ),
@@ -124,7 +126,7 @@ const MainTabNavigator = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#F8AB14" : null,
+                tintColor: focused ? COLORS.accentOrange : null,
               }}
             />
           ),

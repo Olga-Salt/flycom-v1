@@ -186,9 +186,10 @@ import {
   html_script3,
   html_script4,
   html_script5,
-} from "../../../leafletMap/html_script.js";
+} from "../../leafletMap/html_script.js";
 
-import { styles } from "../styles";
+import { styles } from "./styles.js";
+import { commonStyles } from "../../css/common";
 
 // Перейти к настройкам приложения
 const openSettings = () => {
@@ -414,7 +415,7 @@ const MapScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={commonStyles.centeredContainer}>
       <WebView
         ref={webViewRef}
         // style={{ flex: 1 }}
