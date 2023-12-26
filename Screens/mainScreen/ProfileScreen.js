@@ -15,29 +15,29 @@ const Pushicon = require("../../assets/image/Pushicon.png");
 const Themeicon = require("../../assets/image/Themeicon.png");
 const Biometricicon = require("../../assets/image/Biometricicon.png");
 
-const maps = [
-  { label: "Google", value: "1" },
-  { label: "Visicom", value: "2" },
-];
-const langs = [
-  { label: "Русский", value: "1" },
-  { label: "Українська", value: "2" },
-];
-const pushMesseges = [
-  { label: "Выключено", value: "1" },
-  { label: "Включено", value: "2" },
-];
-const themes = [
-  { label: "Светлая", value: "1" },
-  { label: "Темная", value: "2" },
-];
-const biometrics = [
-  { label: "Выключено", value: "1" },
-  { label: "Включено", value: "2" },
-];
-
 const ProfileScreen = () => {
   const { t } = useTranslation();
+
+  const maps = [
+    { label: "Google", value: "1" },
+    { label: "Visicom", value: "2" },
+  ];
+  const langs = [
+    { label: t("language.ru"), value: "1" },
+    { label: t("language.ua"), value: "2" },
+  ];
+  const pushMesseges = [
+    { label: t("title.off"), value: "1" },
+    { label: "Включено", value: "2" },
+  ];
+  const themes = [
+    { label: t("theme.light"), value: "1" },
+    { label: t("theme.dark"), value: "2" },
+  ];
+  const biometrics = [
+    { label: t("title.off"), value: "1" },
+    { label: "Включено", value: "2" },
+  ];
 
   const [map, setMap] = useState(null);
   const [lang, setLangs] = useState(null);
@@ -123,7 +123,7 @@ const ProfileScreen = () => {
         </LinearGradient>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
-        {renderLabel("Язык", Langicon)}
+        {renderLabel(t("language.title"), Langicon)}
 
         <LinearGradient
           style={[styles.btnWithGradient]}
@@ -141,7 +141,7 @@ const ProfileScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Русский"
+            placeholder={t("language.ru")}
             value={lang}
             containerStyle={styles.containerStyle}
             iconColor="#fff"
@@ -153,7 +153,7 @@ const ProfileScreen = () => {
         </LinearGradient>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
-        {renderLabel("Push уведомления", Pushicon)}
+        {renderLabel(t("pushMessage.title"), Pushicon)}
 
         <LinearGradient
           style={[styles.btnWithGradient]}
@@ -171,7 +171,7 @@ const ProfileScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Выключено"
+            placeholder={t("title.off")}
             value={pushMessege}
             containerStyle={styles.containerStyle}
             iconColor="#fff"
@@ -201,7 +201,7 @@ const ProfileScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Светлая"
+            placeholder={t("theme.light")}
             value={theme}
             containerStyle={styles.containerStyle}
             iconColor="#fff"
@@ -213,7 +213,7 @@ const ProfileScreen = () => {
         </LinearGradient>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
-        {renderLabel("Биометрия", Biometricicon)}
+        {renderLabel(t("biometric.title"), Biometricicon)}
 
         <LinearGradient
           style={[styles.btnWithGradient]}
@@ -231,7 +231,7 @@ const ProfileScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Выключено"
+            placeholder={t("title.off")}
             value={biometric}
             containerStyle={styles.containerStyle}
             iconColor="#fff"
