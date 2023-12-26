@@ -2,7 +2,6 @@ import React from "react";
 import { Image, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { useTranslation } from "react-i18next";
 import {
   CalenderScreen,
   CreateScreen,
@@ -17,14 +16,13 @@ const MainTab = createBottomTabNavigator();
 
 // Компонент навигатора
 const MainTabNavigator = () => {
-  const { t } = useTranslation();
-
   return (
     <MainTab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "#F8AB14",
         tabBarHideOnKeyboard: true,
-        headerRight: () => <LanguageToggle />,
+        // headerRight: () => <LanguageToggle />,
+        headerShown: false,
         headerStatusBarHeight: 0,
         tabBarStyle: {
           height: Platform.OS === "ios" ? 66 : 76,
@@ -38,7 +36,7 @@ const MainTabNavigator = () => {
       }}
     >
       <MainTab.Screen
-        name={t("calendar.title")}
+        name="Календарь"
         component={CalenderScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
@@ -57,7 +55,7 @@ const MainTabNavigator = () => {
         name="Карта"
         component={MapScreen}
         options={{
-          headerShown: false,
+          // headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/map.png")}
@@ -71,7 +69,7 @@ const MainTabNavigator = () => {
         }}
       />
       <MainTab.Screen
-        name={t("mytask.title")}
+        name="Мои задачи"
         component={MyTaskScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
@@ -87,7 +85,7 @@ const MainTabNavigator = () => {
         }}
       />
       <MainTab.Screen
-        name={t("estimate.title")}
+        name="Смета"
         component={EstimateScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
@@ -116,10 +114,10 @@ const MainTabNavigator = () => {
           }}
         /> */}
       <MainTab.Screen
-        name={t("settings.title")}
+        name="Настройки"
         component={ProfileScreen}
         options={{
-          headerShown: false,
+          // headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/setings.png")}
