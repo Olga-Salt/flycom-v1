@@ -5,19 +5,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Switch } from "react-native-switch";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLanguage } from "../redux/dashboard/languageSlice";
 
 function LanguageToggle() {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
-  const language = useSelector((state) => state.language);
   const [isEnabled, setIsEnabled] = useState(i18n.language === "ru");
-
-  // const toggleSwitch = () => {
-  //   setIsEnabled((previousState) => !previousState);
-  //   i18n.changeLanguage(isEnabled ? "ua" : "ru");
-  // };
 
   const toggleSwitch = async () => {
     const newLanguage = isEnabled ? "ua" : "ru";

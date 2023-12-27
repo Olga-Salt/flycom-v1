@@ -8,7 +8,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 import { setLanguage } from "../../redux/dashboard/languageSlice";
-import { useDispatch } from "react-redux";
+import { setMaps } from "../../redux/dashboard/mapSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from "./styles";
 import { commonStyles } from "../../css/common";
@@ -23,12 +24,11 @@ const ProfileScreen = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
-
-  console.log("i18n.language", i18n.language);
+  const prevMap = useSelector((state) => state.map);
 
   const maps = [
-    { label: "Google", value: "1" },
-    { label: "Visicom", value: "2" },
+    { label: "Google", value: "Google" },
+    { label: "Visicom", value: "Visicom" },
   ];
   const langs = [
     { label: t("language.ru"), value: "ru" },
@@ -47,28 +47,24 @@ const ProfileScreen = () => {
     { label: "Включено", value: "2" },
   ];
 
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState(prevMap);
   const [lang, setLangs] = useState(i18n.language);
   const [pushMessege, setPushMessege] = useState(null);
   const [theme, setTheme] = useState(null);
   const [biometric, setBiometric] = useState(null);
-
-  const [isEnabled, setIsEnabled] = useState(i18n.language === "ru");
-
-  // const toggleSwitch = async () => {
-  //   const newLanguage = lang === "ru" ? "ua" : "ru";
-  //   i18n.changeLanguage(newLanguage);
-  //   dispatch(setLanguage(newLanguage));
-  //   await AsyncStorage.setItem("language", newLanguage);
-  //   setLangs(newLanguage);
-  // };
 
   const toggleSwitch = async (newLanguage) => {
     if (newLanguage !== i18n.language) {
       i18n.changeLanguage(newLanguage);
       dispatch(setLanguage(newLanguage));
       await AsyncStorage.setItem("language", newLanguage);
-      setIsEnabled(newLanguage === "ru");
+    }
+  };
+
+  const toggleMap = async (newMap) => {
+    if (newMap !== prevMap) {
+      dispatch(setMaps(newMap));
+      await AsyncStorage.setItem("map", newMap);
     }
   };
 
@@ -128,7 +124,7 @@ const ProfileScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Google"
+            placeholder={prevMap}
             value={map}
             containerStyle={styles.containerStyle}
             iconColor="#fff"
@@ -136,6 +132,7 @@ const ProfileScreen = () => {
 
             onChange={(item) => {
               setMap(item.value);
+              toggleMap(item.value);
             }}
             // renderLeftIcon={() => (
             //   <AntDesign
@@ -174,9 +171,7 @@ const ProfileScreen = () => {
             iconColor="#fff"
             onChange={(item) => {
               setLangs(item.value);
-              // toggleSwitch(item.value);
               toggleSwitch(item.value);
-              // i18n.changeLanguage(lang === "ua" ? "ru" : "ua");
             }}
             renderItem={renderItem}
           />
