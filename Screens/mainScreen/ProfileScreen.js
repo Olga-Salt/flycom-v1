@@ -4,7 +4,11 @@ import { SimpleLineIcons } from "react-native-vector-icons";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { LinearGradient } from "expo-linear-gradient";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import { setLanguage } from "../../redux/dashboard/languageSlice";
+import { useDispatch } from "react-redux";
 
 import { styles } from "./styles";
 import { commonStyles } from "../../css/common";
@@ -17,14 +21,18 @@ const Biometricicon = require("../../assets/image/Biometricicon.png");
 
 const ProfileScreen = () => {
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  console.log("i18n.language", i18n.language);
 
   const maps = [
     { label: "Google", value: "1" },
     { label: "Visicom", value: "2" },
   ];
   const langs = [
-    { label: t("language.ru"), value: "1" },
-    { label: t("language.ua"), value: "2" },
+    { label: t("language.ru"), value: "ru" },
+    { label: t("language.ua"), value: "ua" },
   ];
   const pushMesseges = [
     { label: t("title.off"), value: "1" },
@@ -40,10 +48,29 @@ const ProfileScreen = () => {
   ];
 
   const [map, setMap] = useState(null);
-  const [lang, setLangs] = useState(null);
+  const [lang, setLangs] = useState(i18n.language);
   const [pushMessege, setPushMessege] = useState(null);
   const [theme, setTheme] = useState(null);
   const [biometric, setBiometric] = useState(null);
+
+  const [isEnabled, setIsEnabled] = useState(i18n.language === "ru");
+
+  // const toggleSwitch = async () => {
+  //   const newLanguage = lang === "ru" ? "ua" : "ru";
+  //   i18n.changeLanguage(newLanguage);
+  //   dispatch(setLanguage(newLanguage));
+  //   await AsyncStorage.setItem("language", newLanguage);
+  //   setLangs(newLanguage);
+  // };
+
+  const toggleSwitch = async (newLanguage) => {
+    if (newLanguage !== i18n.language) {
+      i18n.changeLanguage(newLanguage);
+      dispatch(setLanguage(newLanguage));
+      await AsyncStorage.setItem("language", newLanguage);
+      setIsEnabled(newLanguage === "ru");
+    }
+  };
 
   const renderLabel = (label, icon) => {
     return (
@@ -147,6 +174,9 @@ const ProfileScreen = () => {
             iconColor="#fff"
             onChange={(item) => {
               setLangs(item.value);
+              // toggleSwitch(item.value);
+              toggleSwitch(item.value);
+              // i18n.changeLanguage(lang === "ua" ? "ru" : "ua");
             }}
             renderItem={renderItem}
           />
