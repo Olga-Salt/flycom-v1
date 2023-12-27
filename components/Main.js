@@ -17,6 +17,7 @@ import { useLoginMutation } from "../redux/apiSlice";
 
 import { useDispatch } from "react-redux";
 import { setLanguage } from "../redux/dashboard/languageSlice";
+import { setMaps } from "../redux/dashboard/mapSlice";
 import { useTranslation } from "react-i18next";
 
 export default function Main({ onLayoutRootView }) {
@@ -27,15 +28,20 @@ export default function Main({ onLayoutRootView }) {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const loadLanguage = async () => {
+    const loadUserStorage = async () => {
       const savedLanguage = await AsyncStorage.getItem("language");
+      const savedMap = await AsyncStorage.getItem("map");
       if (savedLanguage) {
         i18n.changeLanguage(savedLanguage);
         dispatch(setLanguage(savedLanguage));
       }
+
+      if (savedMap) {
+        dispatch(setMaps(savedMap));
+      }
     };
 
-    loadLanguage();
+    loadUserStorage();
   }, [dispatch]);
 
   //   const handleLoginSubmit = async (data) => {
