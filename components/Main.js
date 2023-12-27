@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { useCallback } from "react";
 
@@ -14,9 +15,28 @@ import { useRuote } from "../router";
 
 import { useLoginMutation } from "../redux/apiSlice";
 
+import { useDispatch } from "react-redux";
+import { setLanguage } from "../redux/dashboard/languageSlice";
+import { useTranslation } from "react-i18next";
+
 export default function Main({ onLayoutRootView }) {
   const [isAuth, setIsAuth] = useState(false);
   const [login, { isLoading, error }] = useLoginMutation();
+  const dispatch = useDispatch();
+
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const loadLanguage = async () => {
+      const savedLanguage = await AsyncStorage.getItem("language");
+      if (savedLanguage) {
+        i18n.changeLanguage(savedLanguage);
+        dispatch(setLanguage(savedLanguage));
+      }
+    };
+
+    loadLanguage();
+  }, [dispatch]);
 
   //   const handleLoginSubmit = async (data) => {
   //     try {

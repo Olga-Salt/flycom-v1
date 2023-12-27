@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 import { useCallback } from "react";
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { Image, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useTranslation } from "react-i18next";
+
 import { COLORS } from "../constants";
 
 import {
@@ -17,6 +19,8 @@ const MainTab = createBottomTabNavigator();
 
 // Компонент навигатора
 const MainTabNavigator = () => {
+  const { t } = useTranslation();
+
   return (
     <MainTab.Navigator
       initialRouteName="Мои задачи"
@@ -41,6 +45,7 @@ const MainTabNavigator = () => {
         name="Календарь"
         component={CalenderScreen}
         options={{
+          tabBarLabel: t("calendar.title"),
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/calendar.png")}
@@ -57,7 +62,7 @@ const MainTabNavigator = () => {
         name="Карта"
         component={MapScreen}
         options={{
-          // headerShown: false,
+          tabBarLabel: "Карта",
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/map.png")}
@@ -74,6 +79,7 @@ const MainTabNavigator = () => {
         name="Мои задачи"
         component={MyTaskScreen}
         options={{
+          tabBarLabel: t("mytask.title"),
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/ToDo.png")}
@@ -90,6 +96,7 @@ const MainTabNavigator = () => {
         name="Смета"
         component={EstimateScreen}
         options={{
+          tabBarLabel: t("estimate.title"),
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/estimate.png")}
@@ -119,7 +126,7 @@ const MainTabNavigator = () => {
         name="Настройки"
         component={ProfileScreen}
         options={{
-          // headerShown: false,
+          tabBarLabel: t("settings.title"),
           tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("../assets/image/setings.png")}
