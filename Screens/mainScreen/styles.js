@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
 
   containerStyle: {
     borderRadius: 5,
-    // shadowRadius: 20,
+    overflow: "hidden",
   },
 
   btnLocation: {

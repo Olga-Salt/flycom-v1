@@ -3,7 +3,9 @@ import { Image, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTranslation } from "react-i18next";
 
-import { COLORS } from "../constants";
+import { useSelector } from "react-redux";
+
+import { COLORS, THEME } from "../constants";
 
 import {
   CalenderScreen,
@@ -20,12 +22,15 @@ const MainTab = createBottomTabNavigator();
 // Компонент навигатора
 const MainTabNavigator = () => {
   const { t } = useTranslation();
+  const prevTheme = useSelector((state) => state.theme);
+  let activeTheme = THEME[prevTheme];
 
   return (
     <MainTab.Navigator
       initialRouteName="Мои задачи"
       screenOptions={{
         tabBarActiveTintColor: COLORS.accentOrange,
+        tabBarInactiveTintColor: activeTheme.themeText,
         tabBarHideOnKeyboard: true,
         // headerRight: () => <LanguageToggle />,
         headerShown: false,
@@ -35,7 +40,8 @@ const MainTabNavigator = () => {
           paddingTop: 8,
           paddingBottom: Platform.OS === "ios" ? 0 : 10,
           borderTopColor: "transparent",
-          backgroundColor: "#fff",
+          backgroundColor: activeTheme.themeBackground,
+
           // paddingBottom: Platform.OS === "ios" ? 20 : 10,
           // paddingHorizontal: Platform.OS === "ios" ? 10 : null,
         },

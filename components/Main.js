@@ -15,12 +15,17 @@ import { useRuote } from "../router";
 
 import { useLoginMutation } from "../redux/apiSlice";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../redux/dashboard/languageSlice";
 import { setMaps } from "../redux/dashboard/mapSlice";
+import { setThemes } from "../redux/dashboard/themeSlice";
 import { useTranslation } from "react-i18next";
+import { THEME } from "../constants";
 
 export default function Main({ onLayoutRootView }) {
+  const prevTheme = useSelector((state) => state.theme);
+  let activeTheme = THEME[prevTheme];
+
   const [isAuth, setIsAuth] = useState(false);
   const [login, { isLoading, error }] = useLoginMutation();
   const dispatch = useDispatch();
@@ -31,6 +36,8 @@ export default function Main({ onLayoutRootView }) {
     const loadUserStorage = async () => {
       const savedLanguage = await AsyncStorage.getItem("language");
       const savedMap = await AsyncStorage.getItem("map");
+      const savedTheme = await AsyncStorage.getItem("theme");
+
       if (savedLanguage) {
         i18n.changeLanguage(savedLanguage);
         dispatch(setLanguage(savedLanguage));
@@ -38,6 +45,10 @@ export default function Main({ onLayoutRootView }) {
 
       if (savedMap) {
         dispatch(setMaps(savedMap));
+      }
+
+      if (savedTheme) {
+        dispatch(setThemes(savedTheme));
       }
     };
 
@@ -93,6 +104,8 @@ export default function Main({ onLayoutRootView }) {
     }
   };
 
+  console.log("prevTheme", prevTheme);
+
   const routing = useRuote(
     {},
     // isAuth,
@@ -101,10 +114,10 @@ export default function Main({ onLayoutRootView }) {
   );
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ backgroundColor: activeTheme.themeBackground }}>
       <NavigationContainer>
         {routing}
-        <StatusBar style="auto" />
+        <StatusBar style={prevTheme === "light" ? "dark" : "light"} />
       </NavigationContainer>
     </SafeAreaProvider>
   );

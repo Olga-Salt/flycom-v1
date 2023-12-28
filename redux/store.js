@@ -5,6 +5,7 @@ import authSlice from "./auth/authSlice";
 import languageSlice from "./dashboard/languageSlice";
 import routeSlice from "./dashboard/routeSlice";
 import mapSlice from "./dashboard/mapSlice";
+import themeSlice from "./dashboard/themeSlice";
 
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   language: languageSlice,
   route: routeSlice,
   map: mapSlice,
+  theme: themeSlice,
 });
 
 export const store = configureStore({
