@@ -10,6 +10,23 @@ const COLORS = {
   white: "#fff",
 };
 
+const THEME = {
+  light: {
+    themeBackground: "#fff",
+    themeGrayBackground: "#F4F5F6",
+    themeText: "#384596",
+    themeBlackwhite: "#222",
+    activeColor: "#999",
+  },
+  dark: {
+    themeBackground: "#1F1F1F",
+    themeGrayBackground: "#313131",
+    themeText: "#fff",
+    themeBlackwhite: "#fff",
+    activeColor: "#69696A",
+  },
+};
+
 const FONT = {
   regular: "Inter-Regular",
   medium: "Inter-Medium",
@@ -66,4 +83,4 @@ const SHADOWS = {
   },
 };
 
-export { COLORS, FONT, SIZES, SHADOWS };
+export { COLORS, FONT, SIZES, SHADOWS, THEME };

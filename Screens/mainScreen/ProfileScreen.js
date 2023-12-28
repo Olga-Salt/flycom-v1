@@ -9,9 +9,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 import { setLanguage } from "../../redux/dashboard/languageSlice";
 import { setMaps } from "../../redux/dashboard/mapSlice";
+import { setThemes } from "../../redux/dashboard/themeSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from "./styles";
+import { THEME } from "../../constants";
 import { commonStyles } from "../../css/common";
 
 const Mapicon = require("../../assets/image/Mapicon.png");
@@ -25,6 +28,8 @@ const ProfileScreen = () => {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const prevMap = useSelector((state) => state.map);
+  const prevTheme = useSelector((state) => state.theme);
+  let activeTheme = THEME[prevTheme];
 
   const maps = [
     { label: "Google", value: "Google" },
@@ -39,8 +44,8 @@ const ProfileScreen = () => {
     { label: "Включено", value: "2" },
   ];
   const themes = [
-    { label: t("theme.light"), value: "1" },
-    { label: t("theme.dark"), value: "2" },
+    { label: t("theme.light"), value: "light" },
+    { label: t("theme.dark"), value: "dark" },
   ];
   const biometrics = [
     { label: t("title.off"), value: "1" },
@@ -50,7 +55,7 @@ const ProfileScreen = () => {
   const [map, setMap] = useState(prevMap);
   const [lang, setLangs] = useState(i18n.language);
   const [pushMessege, setPushMessege] = useState(null);
-  const [theme, setTheme] = useState(null);
+  const [theme, setTheme] = useState(prevTheme);
   const [biometric, setBiometric] = useState(null);
 
   const toggleSwitch = async (newLanguage) => {
@@ -67,12 +72,20 @@ const ProfileScreen = () => {
       await AsyncStorage.setItem("map", newMap);
     }
   };
+  const toggleTheme = async (newTheme) => {
+    if (newTheme !== prevTheme) {
+      dispatch(setThemes(newTheme));
+      await AsyncStorage.setItem("theme", newTheme);
+    }
+  };
 
   const renderLabel = (label, icon) => {
     return (
       <View style={commonStyles.rowContainer}>
         <Image style={styles.settingsIcons} source={icon} />
-        <Text style={[styles.label]}>{label}</Text>
+        <Text style={{ ...styles.label, color: activeTheme.themeText }}>
+          {label}
+        </Text>
       </View>
     );
   };
@@ -80,13 +93,22 @@ const ProfileScreen = () => {
   const renderItem = (item) => {
     return (
       <View style={styles.item}>
-        <Text style={styles.textItem}>{item.label}</Text>
+        <Text
+          style={{ ...styles.textItem, color: activeTheme.themeBlackwhite }}
+        >
+          {item.label}
+        </Text>
       </View>
     );
   };
 
   return (
-    <View style={commonStyles.container}>
+    <View
+      style={{
+        ...commonStyles.container,
+        backgroundColor: activeTheme.themeBackground,
+      }}
+    >
       <View style={{ ...commonStyles.rowContainer, marginBottom: 28 }}>
         <View style={styles.userInfoWrap}>
           <View>
@@ -96,12 +118,18 @@ const ProfileScreen = () => {
             />
           </View>
           <View>
-            <Text style={styles.userName}>Иванов Иван Иванович</Text>
+            <Text style={{ ...styles.userName, color: activeTheme.themeText }}>
+              Иванов Иван Иванович
+            </Text>
             <Text style={styles.userDetails}>Специалист ТС Одесса</Text>
           </View>
         </View>
         <View style={styles.notificationBell}>
-          <SimpleLineIcons name="bell" size={24} color="black" />
+          <SimpleLineIcons
+            name="bell"
+            size={24}
+            color={activeTheme.themeBlackwhite}
+          />
           <View style={styles.notificationDot}></View>
         </View>
       </View>
@@ -228,10 +256,16 @@ const ProfileScreen = () => {
             valueField="value"
             placeholder={t("theme.light")}
             value={theme}
-            containerStyle={styles.containerStyle}
+            activeColor="#999"
+            // activeColor={activeTheme.activeColor}
+            containerStyle={{
+              ...styles.containerStyle,
+              backgroundColor: activeTheme.themeGrayBackground,
+            }}
             iconColor="#fff"
             onChange={(item) => {
               setTheme(item.value);
+              toggleTheme(item.value);
             }}
             renderItem={renderItem}
           />
