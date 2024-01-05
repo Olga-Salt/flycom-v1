@@ -13,12 +13,11 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { useRuote } from "../router";
 
-import { useLoginMutation } from "../redux/apiSlice";
-
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../redux/dashboard/languageSlice";
 import { setMaps } from "../redux/dashboard/mapSlice";
 import { setThemes } from "../redux/dashboard/themeSlice";
+import { setBiometrics } from "../redux/dashboard/biometricSlise";
 import { useTranslation } from "react-i18next";
 import { THEME } from "../constants";
 
@@ -26,9 +25,8 @@ export default function Main({ onLayoutRootView }) {
   const prevTheme = useSelector((state) => state.theme);
   let activeTheme = THEME[prevTheme];
 
-  const [isAuth, setIsAuth] = useState(false);
-  const [login, { isLoading, error }] = useLoginMutation();
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   const { i18n } = useTranslation();
 
@@ -37,6 +35,7 @@ export default function Main({ onLayoutRootView }) {
       const savedLanguage = await AsyncStorage.getItem("language");
       const savedMap = await AsyncStorage.getItem("map");
       const savedTheme = await AsyncStorage.getItem("theme");
+      const savedBiometric = await AsyncStorage.getItem("biometric");
 
       if (savedLanguage) {
         i18n.changeLanguage(savedLanguage);
@@ -50,67 +49,19 @@ export default function Main({ onLayoutRootView }) {
       if (savedTheme) {
         dispatch(setThemes(savedTheme));
       }
+
+      if (savedBiometric) {
+        dispatch(setBiometrics(savedBiometric));
+      }
     };
 
     loadUserStorage();
   }, [dispatch]);
 
-  //   const handleLoginSubmit = async (data) => {
-  //     try {
-  //       const { email, password } = data;
-  //       console.log("email", email);
-  //       console.log("password", password);
-
-  //       const result = await login({ login: email, password: password });
-  //       console.log("result", result);
-
-  //       const response = await fetch("http://91.225.160.55:5000/login", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ login: email, password: password }),
-  //       });
-
-  //       if (response.ok) {
-  //         const result = await response.json();
-  //         console.log(result);
-  //         result.access_granted === true ? setIsAuth(true) : false;
-  //         // setIsAuth(true);
-  //       } else {
-  //         console.log("Ошибка при запросе: status", response.status);
-  //       }
-  //     } catch (error) {
-  //       console.log("Ошибка error при запросе:", error);
-  //     }
-  //   };
-
-  const handleLoginSubmit = async (data) => {
-    try {
-      const { email, password } = data;
-      console.log("email", email);
-      console.log("password", password);
-
-      const result = await login({ login: email, password: password });
-      console.log("result", result);
-
-      if (result.data.access_granted) {
-        setIsAuth(true);
-      } else {
-        console.log("Ошибка при запросе: status", result.error);
-      }
-    } catch (error) {
-      console.log("Ошибка error при запросе:", error);
-    }
-  };
-
-  console.log("prevTheme", prevTheme);
-
   const routing = useRuote(
-    {},
-    // isAuth,
-    onLayoutRootView,
-    handleLoginSubmit
+    // {},
+    isAuth,
+    onLayoutRootView
   );
 
   return (

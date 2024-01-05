@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import {
   View,
   Text,
@@ -12,6 +11,8 @@ import {
 } from "react-native";
 
 import { commonStyles } from "../../css/common";
+import { Container } from "../../components/common/containers";
+import { UserName } from "../../components/common/userInfo";
 
 const data = [
   { label: "Item 1", value: "1" },
@@ -33,7 +34,13 @@ const MyTaskScreen = () => {
   };
 
   return (
-    <View style={commonStyles.container}>
+    <Container>
+      <UserName>
+        <Image
+          style={styles.settingsIcons}
+          source={require("../../assets/image/Push.png")}
+        />
+      </UserName>
       <ScrollView style={styles.scrollView}>
         <Text style={commonStyles.sectionTitle}>Новая заявка:</Text>
         <View style={commonStyles.rowContainer}>
@@ -49,7 +56,8 @@ const MyTaskScreen = () => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder={!isFocus ? "Select item" : "..."}
+            placeholder=""
+            // placeholder={!isFocus ? "Select item" : "..."}
             searchPlaceholder="Поиск..."
             value={value}
             onFocus={() => setIsFocus(true)}
@@ -58,14 +66,6 @@ const MyTaskScreen = () => {
               setValue(item.value);
               setIsFocus(false);
             }}
-            // renderLeftIcon={() => (
-            //   <AntDesign
-            //     style={styles.icon}
-            //     color={isFocus ? "blue" : "black"}
-            //     name="Safety"
-            //     size={15}
-            //   />
-            // )}
           />
         </View>
         <View style={commonStyles.rowContainer}>
@@ -93,7 +93,7 @@ const MyTaskScreen = () => {
           />
         </View>
       </ScrollView>
-    </View>
+    </Container>
   );
 };
 
