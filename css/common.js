@@ -45,7 +45,7 @@ export const commonStyles = StyleSheet.create({
     paddingTop: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: SIZES.xxLarge,
+    // marginHorizontal: SIZES.xxLarge,
   },
 
   btnTitleGradient: {

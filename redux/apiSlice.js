@@ -37,8 +37,6 @@ export const apiSlice = createApi({
   }),
 });
 
-// console.log("apiSlice", apiSlice);
-
 export const {
   useLoginMutation,
   useGetUserQuery,

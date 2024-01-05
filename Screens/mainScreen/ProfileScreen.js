@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import { SimpleLineIcons } from "react-native-vector-icons";
+import { Text, View, Image } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { LinearGradient } from "expo-linear-gradient";
+import { SimpleLineIcons } from "react-native-vector-icons";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 import { setLanguage } from "../../redux/dashboard/languageSlice";
 import { setMaps } from "../../redux/dashboard/mapSlice";
 import { setThemes } from "../../redux/dashboard/themeSlice";
+import { setBiometrics } from "../../redux/dashboard/biometricSlise";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from "./styles";
 import { THEME } from "../../constants";
 import { commonStyles } from "../../css/common";
+
+import { Container } from "../../components/common/containers";
+import { UserName } from "../../components/common/userInfo";
+import {
+  GradientBtn,
+  LinearGradientWrap,
+} from "../../components/common/buttons";
 
 const Mapicon = require("../../assets/image/Mapicon.png");
 const Langicon = require("../../assets/image/Languageicon.png");
@@ -28,6 +35,7 @@ const ProfileScreen = () => {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const prevMap = useSelector((state) => state.map);
+  const prevBiometric = useSelector((state) => state.biometric);
   const prevTheme = useSelector((state) => state.theme);
   let activeTheme = THEME[prevTheme];
 
@@ -48,15 +56,15 @@ const ProfileScreen = () => {
     { label: t("theme.dark"), value: "dark" },
   ];
   const biometrics = [
-    { label: t("title.off"), value: "1" },
-    { label: "Включено", value: "2" },
+    { label: t("title.off"), value: "Выключено" },
+    { label: "Включено", value: "Включено" },
   ];
 
   const [map, setMap] = useState(prevMap);
   const [lang, setLangs] = useState(i18n.language);
   const [pushMessege, setPushMessege] = useState(null);
   const [theme, setTheme] = useState(prevTheme);
-  const [biometric, setBiometric] = useState(null);
+  const [biometric, setBiometric] = useState(prevBiometric);
 
   const toggleSwitch = async (newLanguage) => {
     if (newLanguage !== i18n.language) {
@@ -66,16 +74,29 @@ const ProfileScreen = () => {
     }
   };
 
-  const toggleMap = async (newMap) => {
-    if (newMap !== prevMap) {
-      dispatch(setMaps(newMap));
-      await AsyncStorage.setItem("map", newMap);
-    }
-  };
-  const toggleTheme = async (newTheme) => {
-    if (newTheme !== prevTheme) {
-      dispatch(setThemes(newTheme));
-      await AsyncStorage.setItem("theme", newTheme);
+  // const toggleMap = async (newMap) => {
+  //   if (newMap !== prevMap) {
+  //     dispatch(setMaps(newMap));
+  //     await AsyncStorage.setItem("map", newMap);
+  //   }
+  // };
+  // const toggleTheme = async (newTheme) => {
+  //   if (newTheme !== prevTheme) {
+  //     dispatch(setThemes(newTheme));
+  //     await AsyncStorage.setItem("theme", newTheme);
+  //   }
+  // };
+  // const toggleBiometic = async (newBiometric) => {
+  //   if (newBiometric !== prevBiometric) {
+  //     dispatch(setBiometrics(newBiometric));
+  //     await AsyncStorage.setItem("biometric", newBiometric);
+  //   }
+  // };
+
+  const handleToggle = async (newItem, prevItem, action, storageItem) => {
+    if (newItem !== prevItem) {
+      dispatch(action(newItem));
+      await AsyncStorage.setItem(storageItem, newItem);
     }
   };
 
@@ -103,27 +124,8 @@ const ProfileScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        ...commonStyles.container,
-        backgroundColor: activeTheme.themeBackground,
-      }}
-    >
-      <View style={{ ...commonStyles.rowContainer, marginBottom: 28 }}>
-        <View style={styles.userInfoWrap}>
-          <View>
-            <Image
-              style={styles.userAvatar}
-              source={require("../../assets/image/user.png")}
-            />
-          </View>
-          <View>
-            <Text style={{ ...styles.userName, color: activeTheme.themeText }}>
-              Иванов Иван Иванович
-            </Text>
-            <Text style={styles.userDetails}>Специалист ТС Одесса</Text>
-          </View>
-        </View>
+    <Container>
+      <UserName>
         <View style={styles.notificationBell}>
           <SimpleLineIcons
             name="bell"
@@ -132,17 +134,12 @@ const ProfileScreen = () => {
           />
           <View style={styles.notificationDot}></View>
         </View>
-      </View>
+      </UserName>
+
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
         {renderLabel("Карта", Mapicon)}
 
-        <LinearGradient
-          style={[styles.btnWithGradient]}
-          activeOpacity={0.8}
-          colors={["#75C7F1", "#384596"]}
-          locations={[0, 1]}
-          end={{ x: 0.1, y: 1 }}
-        >
+        <LinearGradientWrap addStyle={styles.selectWithGradient}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -154,36 +151,25 @@ const ProfileScreen = () => {
             valueField="value"
             placeholder={prevMap}
             value={map}
-            containerStyle={styles.containerStyle}
+            containerStyle={{
+              ...styles.containerStyle,
+              backgroundColor: activeTheme.themeGrayBackground,
+            }}
+            activeColor="#999"
             iconColor="#fff"
-            // itemTextStyle="#fff"
-
             onChange={(item) => {
               setMap(item.value);
-              toggleMap(item.value);
+              // toggleMap(item.value);
+              handleToggle(item.value, prevMap, setMaps, "map");
             }}
-            // renderLeftIcon={() => (
-            //   <AntDesign
-            //     style={styles.icon}
-            //     color="black"
-            //     name="Safety"
-            //     size={20}
-            //   />
-            // )}
             renderItem={renderItem}
           />
-        </LinearGradient>
+        </LinearGradientWrap>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
         {renderLabel(t("language.title"), Langicon)}
 
-        <LinearGradient
-          style={[styles.btnWithGradient]}
-          activeOpacity={0.8}
-          colors={["#75C7F1", "#384596"]}
-          locations={[0, 1]}
-          end={{ x: 0.1, y: 1 }}
-        >
+        <LinearGradientWrap addStyle={styles.selectWithGradient}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -195,7 +181,11 @@ const ProfileScreen = () => {
             valueField="value"
             placeholder={t("language.ru")}
             value={lang}
-            containerStyle={styles.containerStyle}
+            containerStyle={{
+              ...styles.containerStyle,
+              backgroundColor: activeTheme.themeGrayBackground,
+            }}
+            activeColor="#999"
             iconColor="#fff"
             onChange={(item) => {
               setLangs(item.value);
@@ -203,18 +193,12 @@ const ProfileScreen = () => {
             }}
             renderItem={renderItem}
           />
-        </LinearGradient>
+        </LinearGradientWrap>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
         {renderLabel(t("pushMessage.title"), Pushicon)}
 
-        <LinearGradient
-          style={[styles.btnWithGradient]}
-          activeOpacity={0.8}
-          colors={["#75C7F1", "#384596"]}
-          locations={[0, 1]}
-          end={{ x: 0.1, y: 1 }}
-        >
+        <LinearGradientWrap addStyle={styles.selectWithGradient}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -226,25 +210,23 @@ const ProfileScreen = () => {
             valueField="value"
             placeholder={t("title.off")}
             value={pushMessege}
-            containerStyle={styles.containerStyle}
+            activeColor="#999"
+            containerStyle={{
+              ...styles.containerStyle,
+              backgroundColor: activeTheme.themeGrayBackground,
+            }}
             iconColor="#fff"
             onChange={(item) => {
               setPushMessege(item.value);
             }}
             renderItem={renderItem}
           />
-        </LinearGradient>
+        </LinearGradientWrap>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
         {renderLabel("Тема", Themeicon)}
 
-        <LinearGradient
-          style={[styles.btnWithGradient]}
-          activeOpacity={0.8}
-          colors={["#75C7F1", "#384596"]}
-          locations={[0, 1]}
-          end={{ x: 0.1, y: 1 }}
-        >
+        <LinearGradientWrap addStyle={styles.selectWithGradient}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -257,7 +239,6 @@ const ProfileScreen = () => {
             placeholder={t("theme.light")}
             value={theme}
             activeColor="#999"
-            // activeColor={activeTheme.activeColor}
             containerStyle={{
               ...styles.containerStyle,
               backgroundColor: activeTheme.themeGrayBackground,
@@ -265,22 +246,17 @@ const ProfileScreen = () => {
             iconColor="#fff"
             onChange={(item) => {
               setTheme(item.value);
-              toggleTheme(item.value);
+              // toggleTheme(item.value);
+              handleToggle(item.value, prevTheme, setThemes, "theme");
             }}
             renderItem={renderItem}
           />
-        </LinearGradient>
+        </LinearGradientWrap>
       </View>
       <View style={{ ...commonStyles.rowContainer, marginBottom: 24 }}>
         {renderLabel(t("biometric.title"), Biometricicon)}
 
-        <LinearGradient
-          style={[styles.btnWithGradient]}
-          activeOpacity={0.8}
-          colors={["#75C7F1", "#384596"]}
-          locations={[0, 1]}
-          end={{ x: 0.1, y: 1 }}
-        >
+        <LinearGradientWrap addStyle={styles.selectWithGradient}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -292,32 +268,35 @@ const ProfileScreen = () => {
             valueField="value"
             placeholder={t("title.off")}
             value={biometric}
-            containerStyle={styles.containerStyle}
+            activeColor="#999"
+            containerStyle={{
+              ...styles.containerStyle,
+              backgroundColor: activeTheme.themeGrayBackground,
+            }}
             iconColor="#fff"
             onChange={(item) => {
               setBiometric(item.value);
+              // toggleBiometic(item.value);
+              handleToggle(
+                item.value,
+                prevBiometric,
+                setBiometrics,
+                "biometric"
+              );
             }}
             renderItem={renderItem}
           />
-        </LinearGradient>
+        </LinearGradientWrap>
       </View>
+
       <View style={styles.centeredBtnWrapper}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          // onPress={handleSubmit(onSubmit)}
-        >
-          <LinearGradient
-            style={{ ...commonStyles.btnWithGradient, marginHorizontal: 48 }}
-            activeOpacity={0.8}
-            colors={["#75C7F1", "#384596"]}
-            locations={[0, 1]}
-            end={{ x: 0.1, y: 1 }}
-          >
-            <Text style={commonStyles.btnTitleGradient}>{t("logout.btn")}</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+        <GradientBtn
+          onPress={() => {}}
+          title={t("logout.btn")}
+          addStyle={{ marginHorizontal: 48 }}
+        />
       </View>
-    </View>
+    </Container>
   );
 };
 

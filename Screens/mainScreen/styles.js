@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
     }),
   },
 
-  btnWithGradient: {
+  selectWithGradient: {
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",

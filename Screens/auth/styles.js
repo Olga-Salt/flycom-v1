@@ -5,7 +5,11 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
+    alignItems: "center",
+
+    // justifyContent: "flex-end",
+
+    // justifyContent: "center",
   },
   // image: {
   //   flex: 1,
@@ -25,7 +29,8 @@ export const styles = StyleSheet.create({
   },
 
   formWrapper: {
-    backgroundColor: COLORS.white,
+    // backgroundColor: COLORS.white,
+    // flex: 1,
     alignItems: "center",
   },
 
